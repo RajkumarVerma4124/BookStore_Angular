@@ -14,7 +14,8 @@ export class ResetpasswordComponent implements OnInit {
   submitted = false;
   hide = true;
 
-  constructor(private formbuilder: FormBuilder, private router: Router) { }
+  constructor(private formbuilder: FormBuilder, private router: Router) { 
+  }
 
   ngOnInit() {
     this.resetPassForm = this.formbuilder.group({

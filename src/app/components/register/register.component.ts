@@ -13,7 +13,9 @@ export class RegisterComponent implements OnInit {
   submitted = false;
   hide = true;
   
-  constructor(private formbuilder: FormBuilder, private router: Router) { }
+  constructor(private formbuilder: FormBuilder, private router: Router) {
+
+   }
 
   ngOnInit() {
     this.registerForm = this.formbuilder.group({

@@ -37,7 +37,8 @@
                 </mat-form-field>
             </div>
             <div>
-                <button mat-button color="primary" routerLink="/forgotpassword">Forgot Password?</button>
+                <button mat-flat-button color="primary" (click)="forgotpassword()">Forgot Password?</button>
+                <!-- <button mat-button color="primary" (click)="forgotpassword()">Forgot Password?</button> -->
             </div>
             <div>
                 <button class="signupbutton" (click)="onSubmit()" mat-flat-button>Login</button>

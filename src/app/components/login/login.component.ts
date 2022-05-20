@@ -13,7 +13,9 @@ export class LoginComponent implements OnInit {
   submitted = false;
   hide = true;
 
-  constructor(private formbuilder: FormBuilder, private router: Router) { }
+  constructor(private formbuilder: FormBuilder, private router: Router) { 
+
+  }
 
   ngOnInit(): void {
     this.loginForm = this.formbuilder.group({
@@ -34,5 +36,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+  }
+
+  forgotpassword(){
+    this.router.navigateByUrl('/forgotpassword');
   }
 }

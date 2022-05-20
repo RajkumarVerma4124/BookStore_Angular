@@ -13,7 +13,8 @@ export class ForgotpasswordComponent implements OnInit {
   submitted = false;
   hide = true;
 
-  constructor(private formbuilder: FormBuilder, private router: Router) { }
+  constructor(private formbuilder: FormBuilder, private router: Router) {
+   }
 
   ngOnInit(): void {
     this.forgotPassForm = this.formbuilder.group({
