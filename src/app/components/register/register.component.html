@@ -1,1 +1,60 @@
-<p>register works!</p>
+<div class="register_container" fxLayout="row" fxLayoutAlign="center center">
+    <div class="imagecontainer">
+        <div>
+            <img class="formimage" src="../../../assets/images/component.png" alt="">
+        </div>
+        <div class="text">
+            Online Book Shopping
+        </div>
+    </div>
+    <div class="form_container">
+        <div class="form_head">
+            <div [ngClass]="category == false ? 'login' : 'login login_active'" (click)="login()">
+                <P>Login</P>
+            </div>
+            <div [ngClass]="category == true ? 'signup' : 'signup signup_active'" (click)="register()">
+                <p>Signup</p>
+            </div>
+        </div>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form">
+            <div>
+                <mat-label style="font-size: 12px;">Full Name</mat-label>
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="" formControlName="fullName">
+                    <mat-error *ngIf="submitted && registerForm.get('fullName')?.hasError('required')">Full name is required</mat-error>
+                    <mat-error *ngIf="submitted && registerForm.get('fullName')?.errors?.['pattern']">Full name is not valid</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form_feild">
+                <mat-label style="font-size: 12px;">Email</mat-label>
+                <mat-form-field appearance="outline">
+                    <input matInput formControlName="emailId" placeholder="">
+                    <mat-error *ngIf="submitted && registerForm.get('fullName')?.hasError('required')">Enter Email</mat-error>
+                    <mat-error *ngIf="submitted && registerForm.get('fullName')?.errors?.['pattern']">Enter Valid Email</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form_feild">
+                <mat-label style="font-size: 12px;">Password</mat-label>
+                <mat-form-field appearance="outline">
+                    <input matInput [type]="hide ? 'password' : 'text'" placeholder="" formControlName="password">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="submitted && registerForm.get('password')?.hasError('required')">Enter Password</mat-error>
+                    <mat-error *ngIf="submitted && registerForm.get('password')?.errors?.['pattern']">Enter Valid Password</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form_feild">
+                <mat-label style="font-size: 12px;">Mobile Number</mat-label>
+                <mat-form-field appearance="outline">
+                    <input matInput formControlName="mobileNumber" placeholder="">
+                    <mat-error *ngIf="submitted && registerForm.get('mobileNumber')?.hasError('required')">Enter Mobile Number</mat-error>
+                    <mat-error *ngIf="submitted && registerForm.get('mobileNumber')?.errors?.['pattern']">Enter Valid Mobile Number</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <button class="signupbutton" (click)="onSubmit()" mat-flat-button>Signup</button>
+            </div>
+        </form>
+    </div>
+</div>
