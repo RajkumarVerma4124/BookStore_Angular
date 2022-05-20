@@ -18,7 +18,7 @@
         </div>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
             <div class="">
-                <mat-label style="font-size: 12px;">Email</mat-label>
+                <mat-label style="font-size: 12px;">Email Id</mat-label>
                 <mat-form-field appearance="outline">
                     <input matInput formControlName="emailId" placeholder="">
                     <mat-error *ngIf="submitted && loginForm.get('emailId')?.hasError('required')">Enter Email</mat-error>
@@ -36,8 +36,8 @@
                     <mat-error *ngIf="submitted && loginForm.get('password')?.errors?.['pattern']">Enter Valid Password</mat-error>
                 </mat-form-field>
             </div>
-            <div class="forgotpasswordbutton">
-                <button mat-button color="primary">Forgot Password?</button>
+            <div>
+                <button mat-button color="primary" routerLink="/forgotpassword">Forgot Password?</button>
             </div>
             <div>
                 <button class="signupbutton" (click)="onSubmit()" mat-flat-button>Login</button>
