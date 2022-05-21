@@ -158,11 +158,18 @@ h2 {
     margin-top: -1px;
 }
 
-.mat-flat-button.mat-primary,
-.mat-raised-button.mat-primary,
-.mat-fab.mat-primary,
-.mat-mini-fab.mat-primary {
+.forgotPassButton {
     background-color: transparent;
+    font-size: 12px;
+    padding: 2px 5px;
+    margin-top: -8%;
+    color: #9D9D9D;
+    margin-left: 145px;
+}
+
+.mat-button.mat-primary,
+.mat-icon-button.mat-primary,
+.mat-stroked-button.mat-primary {
     font-size: 12px;
     padding: 2px 5px;
     margin-top: -8%;
@@ -170,7 +177,57 @@ h2 {
     margin-left: 140px;
 }
 
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle,
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
+.mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+    background-color: #A03037 !important;
+}
+
+::ng-deep .mat-radio-outer-circle {
+    border-color: #A03037 !important;
+    height: 15px !important;
+    width: 15px !important;
+}
+
+::ng-deep .mat-radio-inner-circle {
+    border-color: #A03037 !important;
+    height: 14px !important;
+    width: 15px !important;
+}
+
+::ng-deep .mat-radio-label-content {
+    margin-top: -6px;
+    padding-left: 2px !important;
+}
+
+.userradiobutton {
+    margin-left: 25px;
+    margin-bottom: 5px;
+}
+
+.radiotype {
+    justify-content: space-between;
+    width: 252px;
+    margin-bottom: 5px;
+}
+
 @media (max-width: 700px) {
+    .imagecontainer {
+        display: none;
+    }
+    .form_container {
+        width: 60%;
+        margin-left: 0%;
+        height: 500px;
+    }
+    .form_head {
+        padding: 60px 90px 20px 90px;
+        margin-left: 4px;
+    }
+}
+
+@media (max-width: 600px) {
     .register_container {
         align-items: center !important;
         justify-content: center !important;
@@ -178,12 +235,22 @@ h2 {
     .imagecontainer {
         display: none;
     }
-    .form_container {
-        margin-left: 7%;
-        height: 500px;
-    }
     .form_head {
         padding: 60px 90px 20px 90px;
         margin-left: 4px;
+        margin-top: -5px;
+    }
+    .register_container {
+        background-color: #ffffff;
+    }
+    .form_container {
+        margin-top: 40px;
+        width: 100%;
+        height: 100%;
+        box-shadow: none;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border-radius: none;
+        border: none;
+        margin-left: -5px;
     }
 }

@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   category: boolean = true;
+  isAdmin: boolean = true;
   loginForm!: FormGroup;
   submitted = false;
   hide = true;
@@ -40,5 +41,13 @@ export class LoginComponent implements OnInit {
 
   forgotpassword(){
     this.router.navigateByUrl('/forgotpassword');
+  }
+
+  admin() {
+    this.isAdmin = true;
+  }
+
+  userReg() {
+    this.isAdmin = false;
   }
 }

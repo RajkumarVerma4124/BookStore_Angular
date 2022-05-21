@@ -21,7 +21,7 @@
                 <mat-label style="font-size: 12px;">Full Name</mat-label>
                 <mat-form-field appearance="outline">
                     <input matInput placeholder="" formControlName="fullName">
-                    <mat-error *ngIf="submitted && registerForm.get('fullName')?.hasError('required')">Full name is required</mat-error>
+                    <mat-error *ngIf="submitted && registerForm.get('fullName')?.hasError('required')">Enter Full name</mat-error>
                     <mat-error *ngIf="submitted && registerForm.get('fullName')?.errors?.['pattern']">Full name is not valid</mat-error>
                 </mat-form-field>
             </div>
@@ -29,8 +29,8 @@
                 <mat-label style="font-size: 12px;">Email Id</mat-label>
                 <mat-form-field appearance="outline">
                     <input matInput formControlName="emailId" placeholder="">
-                    <mat-error *ngIf="submitted && registerForm.get('fullName')?.hasError('required')">Enter Email</mat-error>
-                    <mat-error *ngIf="submitted && registerForm.get('fullName')?.errors?.['pattern']">Enter Valid Email</mat-error>
+                    <mat-error *ngIf="submitted && registerForm.get('emailId')?.hasError('required')">Enter Email</mat-error>
+                    <mat-error *ngIf="submitted && registerForm.get('emailId')?.errors?.['pattern']">Enter Valid Email</mat-error>
                 </mat-form-field>
             </div>
             <div class="form_feild">
@@ -53,7 +53,7 @@
                 </mat-form-field>
             </div>
             <div>
-                <button class="signupbutton" (click)="onSubmit()" mat-flat-button>Signup</button>
+                <button class="signupbutton" mat-flat-button>Signup</button>
             </div>
         </form>
     </div>

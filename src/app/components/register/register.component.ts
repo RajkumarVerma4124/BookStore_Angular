@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { UserService } from 'src/app/services/userServices/user.service';
+
 
 @Component({
   selector: 'app-register',
@@ -12,10 +15,10 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   submitted = false;
   hide = true;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'start';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   
-  constructor(private formbuilder: FormBuilder, private router: Router) {
-
-   }
+  constructor(private formbuilder: FormBuilder, private router: Router, private userService: UserService, private snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.registerForm = this.formbuilder.group({
@@ -38,5 +41,35 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.submitted= true;
+    if (this.registerForm.valid) {
+      let reqData = {
+        fullName: this.registerForm.value.fullName,
+        emailId: this.registerForm.value.emailId,
+        password: this.registerForm.value.password,
+        mobileNumber: this.registerForm.value.mobileNumber
+      }
+      this.userService.register(reqData).subscribe((response: any) => {
+        console.log("Registered the user successfully", response);
+        this.router.navigateByUrl('/login')
+        this.snackBar.open('User registered successfully', 'Success', {
+          duration: 4000,
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+        })
+      }, error => {
+        console.log(error);
+        this.snackBar.open(error.error.message, 'Failed', {
+          duration: 4000,
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+        })
+      });
+    } else {
+      this.snackBar.open("Fill the register form with valid values", 'Alert', {
+        duration: 4000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      })
+    } 
   } 
 }

@@ -16,6 +16,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { ResetpasswordComponent } from './components/resetpassword/resetpassword
     MatInputModule,
     MatIconModule,
     MatDividerModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatRadioModule,
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

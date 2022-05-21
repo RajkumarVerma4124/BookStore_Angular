@@ -37,8 +37,13 @@
                 </mat-form-field>
             </div>
             <div>
-                <button mat-flat-button color="primary" (click)="forgotpassword()">Forgot Password?</button>
-                <!-- <button mat-button color="primary" (click)="forgotpassword()">Forgot Password?</button> -->
+                <button mat-flat-button color="primary" class="forgotPassButton" (click)="forgotpassword()">Forgot Password?</button>
+            </div>
+            <div class="radiotype" fxLayout="row">
+                <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="admin" (click)="admin()">Admin</mat-radio-button>
+                    <mat-radio-button value="user" (click)="userReg()" class="userradiobutton">User</mat-radio-button>
+                </mat-radio-group>
             </div>
             <div>
                 <button class="signupbutton" (click)="onSubmit()" mat-flat-button>Login</button>
