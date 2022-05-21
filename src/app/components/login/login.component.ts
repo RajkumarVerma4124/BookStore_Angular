@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
           console.log("User login successfull", response);
           // localStorage.setItem("token", response.token);
           // localStorage.setItem("FullName", response.fullName);
-          // localStorage.setItem("MobileNo", response.MobileNo);
+          // localStorage.setItem("MobileNo", response.MobileNumber);
           // localStorage.setItem("Email", response.emailId);
           this.snackBar.open('User Login successfull', 'Success', {
             duration: 4000,
@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit {
           console.log("Admin login successfull", response);
           // localStorage.setItem("token", response.token);
           // localStorage.setItem("FullName", response.fullName);
-          // localStorage.setItem("MobileNo", response.MobileNo);
+          // localStorage.setItem("MobileNo", response.MobileNumber);
           // localStorage.setItem("Email", response.emailId);
           this.snackBar.open('Admin Login successfull', 'Success', {
             duration: 4000,
