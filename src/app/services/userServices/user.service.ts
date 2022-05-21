@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpService } from '../httpServices/http.service';
 
-
 @Injectable({
   providedIn: 'root'
 })
