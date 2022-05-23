@@ -49,6 +49,10 @@
     border-radius: 2px 2px 0px 0px;
 }
 
+.book:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
 .book_image {
     width: 239px;
     height: auto;

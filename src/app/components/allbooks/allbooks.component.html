@@ -10,7 +10,7 @@
             <div class="sortbooks">
                 <mat-form-field appearance="outline">
                     <mat-label>Sort by relevance</mat-label>
-                    <mat-select class="matselect">
+                    <mat-select>
                         <mat-option (click)="lowToHigh()" value="ltoh">Price: Low to High</mat-option>
                         <mat-option (click)="highToLow()" value="htol">Price: High to Low</mat-option>
                         <mat-option (click)="newestArrivals()" value="na">Newest Arrivals</mat-option>
@@ -21,7 +21,7 @@
 
         <!-- Books List  -->
         <div class="books_list" fxLayout="row">
-            <div class="book" *ngFor="let book of booklist">
+            <div class="book" *ngFor="let book of booklist | filterbook :searchString">
                 <div class=" book_image ">
                     <img class="img " [src]="book?.bookImage">
                 </div>

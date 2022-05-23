@@ -24,7 +24,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AllbooksComponent } from './components/allbooks/allbooks.component';
 import { MatSelectModule } from '@angular/material/select';
 import { AuthguardServiceService } from './services/authguardServices/authguard-service.service';
-
+import { FilterbookPipe } from './pipe/filterbook.pipe';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { AuthguardServiceService } from './services/authguardServices/authguard-
     ResetpasswordComponent,
     PagenotfoundComponent,
     DashboardComponent,
-    AllbooksComponent
+    AllbooksComponent,
+    FilterbookPipe
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,9 @@ import { AuthguardServiceService } from './services/authguardServices/authguard-
     MatRadioModule,
     HttpClientModule,
     MatSnackBarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatMenuModule,
+    MatTooltipModule
   ],
   providers: [AuthguardServiceService],
   bootstrap: [AppComponent]

@@ -19,9 +19,29 @@
         </div>
         <div class="search_right">
             <div class="img_person">
-                <mat-icon>person</mat-icon>
-                <span class="person_name">Raj</span>
+                <mat-icon [matMenuTriggerFor]="logoutmenu">person_outline</mat-icon>
+                <span class="person_name" *ngIf="fullName !== 'null'">{{fullName}}</span>
+                <span class="person_name" style="margin-top:1px" *ngIf="fullName == null">Profile</span>
             </div>
+            <mat-menu #logoutmenu="matMenu" class="usermenu">
+                <p style="text-align: left; color: #0A0102; margin-left: 20px;">Welcome</p>
+                <p style="text-align: left; color: #878787; margin-left: 20px; font-size:12px; margin-top:-3px;">To access account and manage orders</p>
+                <div *ngIf="fullName != null">
+                    <button class="btnforprofile" matTooltip="Logout" mat-raised-button (click)="logout()">logout</button>
+                </div>
+                <div *ngIf="fullName == null">
+                    <button class="btnforprofile" matTooltip="Login/Signup" mat-raised-button (click)="login()">Login/signup</button>
+                </div>
+                <mat-divider></mat-divider>
+                <div fxLayout="row" fxLayoutAlign="start center" style="margin-left: 20px;">
+                    <mat-icon style="color: #7e7e7e;">how_to_vote</mat-icon>
+                    <p style="margin-left: 5px; color: #7e7e7e; margin-top: 10px">Orders</p>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center" style="margin-left: 25px;">
+                    <img style="height:15px; width:15px;" src="../../../assets/images/favourite.png" alt="">
+                    <p style="margin-left: 5px; color: #7e7e7e;margin-top: 10px">Wishlist</p>
+                </div>
+            </mat-menu>
             <div class="img_cart_container">
                 <img class="img_cart" src="../../../assets/images/cart.svg">
                 <span class="person_name">Cart</span>

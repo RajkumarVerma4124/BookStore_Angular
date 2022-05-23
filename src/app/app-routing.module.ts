@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'resetpassword/:token', component: ResetpasswordComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
-    path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticationGuard],
+    path: 'dashboard', component: DashboardComponent,
     children: [
       { path: '', redirectTo: '/dashboard/allbooks', pathMatch: 'full' },
       { path: 'allbooks', component: AllbooksComponent },

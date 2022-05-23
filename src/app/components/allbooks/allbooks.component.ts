@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookService } from 'src/app/services/bookServices/book.service';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-
+import { DataService } from '../../services/dataServices/data.service'
 
 @Component({
   selector: 'app-allbooks',
@@ -12,13 +12,19 @@ import { Router } from '@angular/router';
 export class AllbooksComponent implements OnInit {
   booklist: any = [];
   booksCount: any;
+  searchString: string= "";
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
-  constructor(private bookService: BookService, private router: Router, private snackBar: MatSnackBar) { }
+  constructor(private bookService: BookService, private router: Router, private snackBar: MatSnackBar, 
+    private dataService: DataService) { }
 
   ngOnInit(): void {
     this.getAllbooks();
+    this.dataService.recievedData.subscribe((response: any) => {
+      console.log("Data Recieved", response);
+      this.searchString = response;
+    })
   }
 
   getAllbooks() {
