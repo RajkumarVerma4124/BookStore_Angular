@@ -52,15 +52,16 @@ export class LoginComponent implements OnInit {
       {
         this.userService.login(reqData).subscribe((response: any) => {
           console.log("User login successfull", response);
-          // localStorage.setItem("token", response.token);
-          // localStorage.setItem("FullName", response.fullName);
-          // localStorage.setItem("MobileNo", response.MobileNumber);
-          // localStorage.setItem("Email", response.emailId);
+          localStorage.setItem("token", response.token);
+          localStorage.setItem("FullName", response.fullName);
+          localStorage.setItem("MobileNo", response.mobileNum);
+          localStorage.setItem("Email", response.email);
           this.snackBar.open('User Login successfull', 'Success', {
             duration: 4000,
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,
           })
+          this.router.navigateByUrl('/dashboard')
         }, error => {
           console.log(error);
           this.snackBar.open(error.error.message, 'Failed', {
@@ -72,15 +73,16 @@ export class LoginComponent implements OnInit {
       } else if (this.isAdmin == true){
         this.adminService.adminlogin(reqData).subscribe((response: any) => {
           console.log("Admin login successfull", response);
-          // localStorage.setItem("token", response.token);
-          // localStorage.setItem("FullName", response.fullName);
-          // localStorage.setItem("MobileNo", response.MobileNumber);
-          // localStorage.setItem("Email", response.emailId);
+          localStorage.setItem("token", response.token);
+          localStorage.setItem("FullName", response.fullName);
+          localStorage.setItem("MobileNo", response.mobileNum);
+          localStorage.setItem("Email", response.email);
           this.snackBar.open('Admin Login successfull', 'Success', {
             duration: 4000,
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,
           })
+          this.router.navigateByUrl('/dashboard')
         }, error => {
           console.log(error);
           this.snackBar.open(error.error.message, 'Failed', {

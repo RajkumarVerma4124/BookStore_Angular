@@ -1,0 +1,37 @@
+<div class="dashboard_container">
+    <mat-toolbar class="example-toolbar">
+        <div class="dashboard_name">
+            <button mat-icon-button class="book-icon" aria-label="Example icon-button with menu icon">
+                <img src="../../../assets/images/booklogo.png" alt="">
+             </button>
+            <span class="dashboard_text">Raj Bookstore</span>
+        </div>
+        <div class="header_middle">
+            <div class="div_wrapper" id="searchBox" [ngClass]="!searchBarActive == true ? 'header__middleLeft' : 'header__middleLeft active'" (click)="setSearchActive()">
+                <button mat-icon-button matTooltip="Search" class="inputSearchIcon">
+                    <img src="../../../assets/images/search_black_24dp.svg" />
+                </button>
+                <input type="text" id="iconcross" autocomplete="off" matInput placeholder="Search" (keyup)="recieveSearchNote($event)" [(ngModel)]="searchTerm" />
+                <button mat-icon-button [ngClass]="searchActive == true ? 'iconcross iconactive' : 'iconcross'" (click)="clickCross()">
+                    <img src="../../../assets/images/cross.svg" />
+                </button>
+            </div>
+        </div>
+        <div class="search_right">
+            <div class="img_person">
+                <mat-icon>person</mat-icon>
+                <span class="person_name">Raj</span>
+            </div>
+            <div class="img_cart_container">
+                <img class="img_cart" src="../../../assets/images/cart.svg">
+                <span class="person_name">Cart</span>
+            </div>
+        </div>
+    </mat-toolbar>
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+    <footer class="footer">
+        <span class="footer_text">Copyright © 2020, Bookstore Private Limited. All Rights Reserved</span>
+    </footer>
+</div>

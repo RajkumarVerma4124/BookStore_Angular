@@ -19,6 +19,12 @@ import { ResetpasswordComponent } from './components/resetpassword/resetpassword
 import { MatRadioModule } from '@angular/material/radio';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AllbooksComponent } from './components/allbooks/allbooks.component';
+import { MatSelectModule } from '@angular/material/select';
+import { AuthguardServiceService } from './services/authguardServices/authguard-service.service';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +32,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     RegisterComponent,
     LoginComponent,
     ForgotpasswordComponent,
-    ResetpasswordComponent
+    ResetpasswordComponent,
+    PagenotfoundComponent,
+    DashboardComponent,
+    AllbooksComponent
   ],
   imports: [
     BrowserModule,
@@ -43,9 +52,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatToolbarModule,
     MatRadioModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSelectModule
   ],
-  providers: [],
+  providers: [AuthguardServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

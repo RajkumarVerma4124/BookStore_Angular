@@ -1,0 +1,44 @@
+<div class="body" fxLayout="column">
+    <!-- Books Header -->
+    <div class="books_container" fxLayout="column">
+        <!-- Books Header -->
+        <div class="books_header">
+            <div class="books_count" fxLayout="row">
+                <p id="books" style="font-size: 22px; margin-top: 13px;">Books</p>
+                <p id="count" style="font-size: 12px; margin: 16px 0 0 5px; color: #878787;">({{booksCount}} items)</p>
+            </div>
+            <div class="sortbooks">
+                <mat-form-field appearance="outline">
+                    <mat-label>Sort by relevance</mat-label>
+                    <mat-select class="matselect">
+                        <mat-option (click)="lowToHigh()" value="ltoh">Price: Low to High</mat-option>
+                        <mat-option (click)="highToLow()" value="htol">Price: High to Low</mat-option>
+                        <mat-option (click)="newestArrivals()" value="na">Newest Arrivals</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <!-- Books List  -->
+        <div class="books_list" fxLayout="row">
+            <div class="book" *ngFor="let book of booklist">
+                <div class=" book_image ">
+                    <img class="img " [src]="book?.bookImage">
+                </div>
+                <div class="book_info ">
+                    <div class="book_name ">{{book.bookName}}</div>
+                    <div class="book_author ">by {{book.authorName}}</div>
+                    <div class="book_rating ">
+                        <p style="margin-left: 3px; margin-top: -2px; font-size: 10px; ">{{book.totalRating}}</p>
+                        <img src="../../../assets/images/star.svg " class="star ">
+                        <p style="color: #878787; margin-left: 20px; margin-top: -3px; font-size: 10px; ">({{book.ratingCount}})</p>
+                    </div>
+                    <div class="book_cost ">
+                        <p class="book_discount "><b>Rs. {{book.discountPrice}}</b></p>
+                        <p class="book_price "><s>Rs. {{book.actualPrice}}</s></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
