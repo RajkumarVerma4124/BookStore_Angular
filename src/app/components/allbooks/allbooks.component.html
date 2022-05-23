@@ -22,20 +22,20 @@
         <!-- Books List  -->
         <div class="books_list" fxLayout="row">
             <div class="book" *ngFor="let book of booklist | filterbook :searchString">
-                <div class=" book_image ">
-                    <img class="img " [src]="book?.bookImage">
+                <div class=" book_image">
+                    <img class="img" [src]="book?.bookImage" (click)="quickview(book)" matTooltip="Quickview">
                 </div>
-                <div class="book_info ">
-                    <div class="book_name ">{{book.bookName}}</div>
-                    <div class="book_author ">by {{book.authorName}}</div>
-                    <div class="book_rating ">
-                        <p style="margin-left: 3px; margin-top: -2px; font-size: 10px; ">{{book.totalRating}}</p>
-                        <img src="../../../assets/images/star.svg " class="star ">
-                        <p style="color: #878787; margin-left: 20px; margin-top: -3px; font-size: 10px; ">({{book.ratingCount}})</p>
+                <div class="book_info">
+                    <div class="book_name">{{book.bookName}}</div>
+                    <div class="book_author">by {{book.authorName}}</div>
+                    <div class="book_rating">
+                        <p style="margin-left: 3px; margin-top: -2px; font-size: 10px;">{{book.totalRating}}</p>
+                        <img src="../../../assets/images/star.svg " class="star">
+                        <p style="color: #878787; margin-left: 20px; margin-top: -3px; font-size: 10px;">({{book.ratingCount}})</p>
                     </div>
-                    <div class="book_cost ">
-                        <p class="book_discount "><b>Rs. {{book.discountPrice}}</b></p>
-                        <p class="book_price "><s>Rs. {{book.actualPrice}}</s></p>
+                    <div class="book_cost">
+                        <p class="book_discount"><b>Rs. {{book.discountPrice}}</b></p>
+                        <p class="book_price"><s>Rs. {{book.actualPrice}}</s></p>
                     </div>
                 </div>
             </div>

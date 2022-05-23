@@ -36,9 +36,9 @@
     display: flex;
     flex-wrap: wrap;
     flex-grow: 4;
-    justify-content: space-between;
+    justify-content: start;
     width: 90%;
-    margin-left: 30px;
+    margin-left: 50px;
 }
 
 .book {
@@ -47,6 +47,7 @@
     height: auto;
     margin-bottom: 20px;
     border-radius: 2px 2px 0px 0px;
+    margin-right: 25px;
 }
 
 .book:hover {
@@ -134,7 +135,7 @@
     color: #878787;
 }
 
-@media (max-width: 890px) {
+@media (max-width: 910px) {
     .books_container {
         justify-content: center;
     }

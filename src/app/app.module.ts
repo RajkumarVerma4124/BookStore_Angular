@@ -27,6 +27,7 @@ import { AuthguardServiceService } from './services/authguardServices/authguard-
 import { FilterbookPipe } from './pipe/filterbook.pipe';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { QuickviewComponent } from './components/quickview/quickview.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     PagenotfoundComponent,
     DashboardComponent,
     AllbooksComponent,
-    FilterbookPipe
+    FilterbookPipe,
+    QuickviewComponent
   ],
   imports: [
     BrowserModule,

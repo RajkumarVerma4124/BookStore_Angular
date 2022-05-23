@@ -45,12 +45,20 @@ export class AllbooksComponent implements OnInit {
   }
 
   lowToHigh() {
-    this.booklist = this.booklist.sort((x: any, y: any) => x.discountPrice - y.discountPrice);
+      this.booklist = this.booklist.sort((x: any, y: any) => x.discountPrice - y.discountPrice);
   }
+
   highToLow() {
-    this.booklist = this.booklist.sort((x: any, y: any) => y.discountPrice - x.discountPrice);
+      this.booklist = this.booklist.sort((x: any, y: any) => y.discountPrice - x.discountPrice);
   }
+  
   newestArrivals() {
-    this.booklist.reverse();
+      this.booklist = this.booklist.sort((x: any, y: any) => y.bookId - x.bookId);
+  }
+
+  quickview(book: any) {
+    console.log("Book Id", book.bookId);
+    this.dataService.SendBookId(book.bookId)
+    this.router.navigateByUrl('dashboard/quickview/'+book.bookId)
   }
 }

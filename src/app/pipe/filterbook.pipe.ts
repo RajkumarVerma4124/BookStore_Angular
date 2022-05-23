@@ -9,9 +9,7 @@ export class FilterbookPipe implements PipeTransform {
     if (!searchString) {
       return bookFilterData;
     }
-    return bookFilterData.filter((x: any) => x.bookName.toLocaleLowerCase().includes(searchString)
-      || x.bookDetails.toLocaleLowerCase().includes(searchString)
+    return bookFilterData.filter((x: any) => x.bookName.toLocaleLowerCase().includes(searchString.toLocaleLowerCase()) || x.bookDetails.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())
     );
   }
-
 }
