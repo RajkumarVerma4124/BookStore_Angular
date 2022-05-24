@@ -35,8 +35,7 @@
 .books_list {
     display: flex;
     flex-wrap: wrap;
-    flex-grow: 4;
-    justify-content: start;
+    justify-content: flex-start;
     width: 90%;
     margin-left: 50px;
 }
@@ -47,10 +46,13 @@
     height: auto;
     margin-bottom: 20px;
     border-radius: 2px 2px 0px 0px;
-    margin-right: 25px;
+    margin-right: 20px;
 }
 
 .book:hover {
+    .quickView {
+        opacity: 1;
+    }
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -133,6 +135,36 @@
     font-family: normal normal normal 10px/13px Roboto;
     margin-top: 2px;
     color: #878787;
+}
+
+.outOfStock {
+    width: 158px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 2px;
+    opacity: 0.91;
+    position: absolute;
+    color: #0A0102;
+}
+
+.quickView {
+    width: 80px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    font-size: 11px;
+    background: #353535 0% 0% no-repeat padding-box;
+    border-radius: 1px;
+    position: absolute;
+    opacity: 0;
+    margin-top: 160px;
 }
 
 @media (max-width: 910px) {

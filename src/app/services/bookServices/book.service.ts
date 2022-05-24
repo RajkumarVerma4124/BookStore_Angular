@@ -21,4 +21,35 @@ export class BookService {
     }
     return this.httpService.getService('/Book/GetAll', true, headersOptions)
   }
+
+  getbook(bookId: any) {
+    let headersOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      })
+    }
+    return this.httpService.getService('/Book/Get?bookId='+bookId, true, headersOptions)
+  }
+
+  addFeedback(reqData: any) {
+    console.log(reqData)
+    let header = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      })
+    }
+    return this.httpService.postService('/Feedback/Add', reqData, true, header);
+  }
+
+  getAllFeedback(bookId: any){
+    let headersOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      })
+    }
+    return this.httpService.getService('/Feedback/GetAll?bookId='+bookId, true, headersOptions)
+  }
 }

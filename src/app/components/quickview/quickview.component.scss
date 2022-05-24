@@ -1,0 +1,303 @@
+.book_container {
+    margin: 33px 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.quickview_header {
+    margin-top: -20px;
+}
+
+.book_image_container {
+    display: flex;
+}
+
+.sample_img_container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.sample_img_container {
+    margin: 20px 0 0 0px;
+    border: 2px solid #A03037;
+    width: 42px;
+    height: 52px;
+}
+
+.sample_book_img {
+    width: 30px;
+    height: 40px;
+    margin: 5px 5px;
+}
+
+.book_details {
+    display: flex;
+}
+
+.main_book_img {
+    margin: 20px 0 0 0px;
+    border: 2px solid #E4E4E4;
+    width: 275px;
+    height: 325px;
+}
+
+.main_book_img img {
+    margin: 26px 30px;
+}
+
+.booksButtons {
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.outOfStock {
+    width: 158px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 2px;
+    opacity: 1;
+    position: absolute;
+    color: #0A0102;
+    top: 273px;
+    margin-left: 55px;
+}
+
+.addtobag {
+    background: #A03037 0% 0% no-repeat padding-box;
+    width: 125%;
+    border-radius: 2px;
+    font-family: normal normal medium 15px/18px Lato;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.book_rating {
+    width: 42px;
+    height: 22px;
+    background-color: green;
+    color: #fff;
+    display: flex;
+    margin-top: 3px;
+    justify-content: space-between;
+    border-radius: 2px;
+}
+
+.star {
+    margin-top: 3px;
+    margin-left: 2px;
+    height: 15px;
+}
+
+.wishlist {
+    background: #333333 0% 0% no-repeat padding-box;
+    border-radius: 2px;
+    color: #FFFFFF;
+    width: 125%;
+}
+
+.book_data {
+    margin-top: 20px;
+}
+
+.book_cost {
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+}
+
+.book_discount {
+    font-family: normal normal bold 12px/16px Roboto;
+    color: #0A0102;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.book_price {
+    margin-left: 10px;
+    font-size: 14px;
+    font-family: normal normal normal 10px/13px Roboto;
+    margin-top: 5px;
+    color: #878787;
+    font-weight: 400;
+}
+
+::ng-deep .mat-divider {
+    margin-top: 5px;
+}
+
+.book_detail_info {
+    color: #373434;
+    margin-bottom: 10px;
+}
+
+.book_info {
+    margin: 0px 30px;
+}
+
+.customerfeedback {
+    font-size: 17px;
+    color: #0A0102;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+.review_box {
+    padding: 12px 20px;
+    background-color: #F5F5F5;
+    height: auto;
+    margin-top: 20px;
+}
+
+.starContainer {
+    width: 270px;
+    border: 1px soild #707070;
+    display: flex;
+    margin-left: -10px;
+}
+
+.starContainer .star_icon input {
+    display: none;
+}
+
+.star_icon label {
+    font-size: 18px;
+    color: #707070;
+    padding: 0 10px;
+    float: right;
+    transition: all 0.2s ease;
+}
+
+input:not(:checked)~label:hover,
+input:not(:checked)~label:hover~label {
+    color: #fd4;
+}
+
+input:checked~label {
+    color: #fd4;
+}
+
+input#rate-5:checked~label {
+    color: #fe7;
+}
+
+.textarea {
+    margin: 20px 0;
+}
+
+.textarea textarea {
+    height: 50px;
+    width: 100%;
+    border: none;
+    resize: none;
+}
+
+::placeholder {
+    font: normal normal normal 15px/20px Roboto;
+    letter-spacing: 0px;
+    color: #707070;
+    opacity: 0.18;
+    padding: 5px 5px;
+}
+
+.submitbtn {
+    float: right;
+    margin-top: -10px;
+}
+
+.submitbtn button {
+    width: 80px;
+    height: 25px;
+    background-color: #3371B5;
+    border: none;
+    color: #FFFFFF;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.feedback {
+    margin: 15px 0;
+}
+
+.feedback_name {
+    display: flex;
+    align-items: center;
+}
+
+.feedbackrating {
+    margin-top: -10px;
+}
+
+.feedback_comment {
+    margin: 0px 25px;
+    margin-left: 50px;
+}
+
+.shortnameicon {
+    background-color: transparent;
+    color: gray;
+    height: 40px;
+    width: 40px;
+    box-shadow: none;
+    border: 1px solid gainsboro;
+}
+
+@media (max-width: 810px) {
+    .book_details {
+        flex-direction: column;
+    }
+    .book_info {
+        margin-top: 50px;
+    }
+    .book_image_container {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .book_container {
+        margin: 33px 50px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 300px) {
+    .book_container {
+        margin: 0px;
+        display: flex;
+        flex-direction: column;
+    }
+    .main_book_img {
+        width: 200px;
+        height: 225px;
+    }
+    .wishlist {
+        width: 90px;
+        font-size: 10px
+    }
+    .addtobag {
+        width: 90px;
+        font-size: 10px;
+    }
+    .booksButtons {
+        justify-content: center;
+        column-gap: 10px;
+    }
+    .wishlistIcon {
+        height: 10px;
+        width: 10px;
+        margin-top: -15px;
+        margin-right: 15px;
+        margin-left: -6px;
+    }
+}

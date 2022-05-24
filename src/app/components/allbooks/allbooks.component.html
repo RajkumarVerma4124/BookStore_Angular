@@ -20,10 +20,12 @@
         </div>
 
         <!-- Books List  -->
-        <div class="books_list" fxLayout="row">
-            <div class="book" *ngFor="let book of booklist | filterbook :searchString">
-                <div class=" book_image">
-                    <img class="img" [src]="book?.bookImage" (click)="quickview(book)" matTooltip="Quickview">
+        <div class="books_list">
+            <div class="book" *ngFor="let book of booklist | filterbook : searchString">
+                <div class="book_image">
+                    <img class="img" [src]="book?.bookImage" (click)="quickview(book)">
+                    <span class="outOfStock" *ngIf="book.bookQuantity==0">OUT OF STOCK</span>
+                    <span class="quickView" *ngIf="book.bookQuantity!=0">QUICK VIEW</span>
                 </div>
                 <div class="book_info">
                     <div class="book_name">{{book.bookName}}</div>

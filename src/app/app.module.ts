@@ -60,7 +60,7 @@ import { QuickviewComponent } from './components/quickview/quickview.component';
     MatSnackBarModule,
     MatSelectModule,
     MatMenuModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
   providers: [AuthguardServiceService],
   bootstrap: [AppComponent]

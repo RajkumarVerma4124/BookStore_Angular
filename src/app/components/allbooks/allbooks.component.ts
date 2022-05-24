@@ -58,7 +58,6 @@ export class AllbooksComponent implements OnInit {
 
   quickview(book: any) {
     console.log("Book Id", book.bookId);
-    this.dataService.SendBookId(book.bookId)
     this.router.navigateByUrl('dashboard/quickview/'+book.bookId)
   }
 }
