@@ -5,51 +5,49 @@ import { HttpService } from '../httpServices/http.service';
 @Injectable({
   providedIn: 'root'
 })
-export class BookService {
+export class CartService {
   token: any;
-
   constructor(private httpService: HttpService) { 
     this.token = localStorage.getItem('token')
   }
 
-  getallbooks() {
+  addToCart(reqData: any) {
     let header = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
         'Authorization': `Bearer ${this.token}`
       })
     }
-    return this.httpService.getService('/Book/GetAll', true, header)
+    return this.httpService.postService('/Cart/Add', reqData, true, header);
   }
 
-  getbook(bookId: any) {
+  removeCart(cartId: any) {
     let header = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
         'Authorization': `Bearer ${this.token}`
       })
     }
-    return this.httpService.getService('/Book/Get?bookId=' + bookId, true, header)
+    return this.httpService.deleteService('/Cart/Delete?cartId=' + cartId, true, header);
   }
 
-  addFeedback(reqData: any) {
-    console.log(reqData)
+  updateCart(cartId: any, bookQuantity: any) {
     let header = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
         'Authorization': `Bearer ${this.token}`
       })
     }
-    return this.httpService.postService('/Feedback/Add', reqData, true, header);
+    return this.httpService.putService(`/Cart/Update?cartId=${cartId}&bookquantity=${bookQuantity}`, {}, true, header);
   }
 
-  getAllFeedback(bookId: any){
+  getAllCart() {
     let header = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
         'Authorization': `Bearer ${this.token}`
       })
     }
-    return this.httpService.getService('/Feedback/GetAll?bookId=' + bookId, true, header)
+    return this.httpService.getService('/Cart/GetAll', true, header)
   }
 }

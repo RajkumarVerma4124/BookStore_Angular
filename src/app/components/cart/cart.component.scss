@@ -1,0 +1,181 @@
+.container_wrapper {
+    margin: 0 0 0 150px;
+    height: auto;
+    padding-bottom: 100px;
+}
+
+.cart_header {
+    margin: 15px 15px;
+}
+
+.cart_container {
+    border: 2px solid #DCDCDC;
+    width: 65%;
+    height: auto;
+    padding: 10px 30px 10px 30px;
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart_head {
+    display: flex;
+    margin-bottom: -15px;
+}
+
+.user_location {
+    margin-left: auto;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
+    height: 40px;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+    margin-top: -7.5px;
+}
+
+.book_details {
+    display: flex;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.bookInfo {
+    margin-left: 30px;
+    font-size: 15px;
+}
+
+.bookImage {
+    height: 84px;
+    width: 65px;
+}
+
+.bookName {
+    font-size: 16px;
+    color: #0A0102;
+    margin-bottom: 5px;
+}
+
+.authorName {
+    font-size: 13px;
+    color: #9D9D9D;
+    margin-bottom: 5px;
+}
+
+.book_cost {
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+}
+
+.discountPrice {
+    font-family: normal normal bold 12px/16px Roboto;
+    color: #0A0102;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.actualPrice {
+    margin-left: 10px;
+    font-size: 13px;
+    font-family: normal normal normal 10px/13px Roboto;
+    color: #878787;
+    font-weight: 400;
+}
+
+.cartButtons {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.minus_button,
+.plus_button {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #DBDBDB;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333232;
+}
+
+.cartButtons p {
+    text-align: center;
+    height: 20px;
+    width: 40px;
+    font-size: 15px;
+    margin: 0 5px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    padding: 1px;
+}
+
+.removetext {
+    margin: 10px 15px;
+    color: #0A0102;
+    cursor: pointer;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.removebutton {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.orderButton {
+    background-color: #3371B5;
+    color: #ffffff;
+    border: none;
+    font-size: 15px;
+    padding: 8px 20px;
+    cursor: pointer;
+    border-radius: 2px;
+    text-transform: uppercase;
+}
+
+@media (max-width: 850px) {
+    .main_container {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    .container_wrapper {
+        width: 100%;
+        margin-left: 10%;
+        height: auto;
+        padding-bottom: 100px;
+    }
+    .cart_container {
+        width: 75%;
+    }
+}
+
+@media (max-width: 600px) {
+    .main_container {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    .container_wrapper {
+        width: 100%;
+        margin-left: 4%;
+        height: auto;
+        padding-bottom: 100px;
+    }
+    .cart_container {
+        width: 75%;
+    }
+}
+
+@media (max-width: 400px) {
+    .container_wrapper {
+        margin-left: 0%;
+    }
+}

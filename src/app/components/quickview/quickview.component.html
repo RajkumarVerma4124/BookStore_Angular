@@ -1,8 +1,9 @@
 <div class="quickview_container">
     <div class="book_container">
         <div class="quickview_header" fxLayout="row">
-            <p>Home/Book({{booksData?.bookId}})</p>
+            <p style="font-weight: 500;"><span style="color: #9D9D9D;">Home/ </span>Book ({{booksData?.bookId}})</p>
         </div>
+        <!-- Book Image -->
         <div class="book_details">
             <div class="book_image_container">
                 <div class="sample_img_container" fxLayout="column">
@@ -15,7 +16,7 @@
                     </div>
                     <div class="booksButtons" fxLayout="row">
                         <div *ngIf="booksData?.bookQuantity!=0">
-                            <button mat-raised-button class="addtobag">ADD TO BAG</button>
+                            <button mat-raised-button class="addtobag" (click)="addToCart(booksData)">ADD TO BAG</button>
                         </div>
                         <div *ngIf="booksData?.bookQuantity==0">
                             <button mat-raised-button class="addtobag">Notify Me</button>
@@ -29,6 +30,7 @@
                 </div>
             </div>
 
+            <!-- Book Detailed Info -->
             <div class="book_info" fxLayout="column">
                 <div class="book_data" fxLayout="column">
                     <h2 style="font-size: 20px; color: #0A0102; margin-bottom: 2px;">
@@ -57,12 +59,15 @@
                     <p>{{booksData?.bookDetails}}</p>
                 </div>
                 <mat-divider></mat-divider>
+                <!-- Customer Feedback -->
                 <div fxLayout="column">
                     <div class="customerfeedback">
                         <span>Customer Feedback</span>
                     </div>
+                    <!-- Feedback Review Container -->
                     <div class="review_box">
                         <p>Overall Rating</p>
+                        <!-- Star Container -->
                         <div class="starContainer">
                             <div class="star_icon">
                                 <input type="radio" name="rate" id="rate-5" [(ngModel)]="ratingValue" value="5">
@@ -81,6 +86,7 @@
                                 <label for="rate-1" class="fa fa-star-o"></label>
                             </div>
                         </div>
+                        <!-- Feedback Comment -->
                         <div class="textarea">
                             <textarea cols="30" type="text" placeholder="write your review" [(ngModel)]="comment"></textarea>
                         </div>
@@ -88,6 +94,7 @@
                             <button type="submit" (click)="addFeedback(booksData)">Submit</button>
                         </div>
                     </div>
+                    <!-- Feedback Details -->
                     <div class="feedback" *ngFor="let feedback of feedbackList">
                         <div>
                             <div class="feedback_name">

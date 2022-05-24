@@ -1,0 +1,46 @@
+<div class="main_container">
+    <div class="container_wrapper" fxLayout="column">
+        <div class="cart_header" fxLayout="row">
+            <p style="font-weight: 500;"><span style="color: #9D9D9D;">Home/ </span>My cart</p>
+        </div>
+        <div class="cart_container">
+            <div class="cart_head">
+                <div style="margin-top: 13px; font-weight: 500; font-size: 14px; cursor: pointer;" (click)="cartShowHide()">
+                    My cart&nbsp;({{cartItemsCount}})
+                </div>
+                <div class="user_location">
+                    <mat-form-field appearance="outline">
+                        <mat-label><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; Use current location</mat-label>
+                        <mat-select>
+                            <mat-option value="NaviMumbai">Navi Mumbai</mat-option>
+                            <mat-option value="Mumbai">Mumbai</mat-option>
+                            <mat-option value="Delhi">Delhi</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div *ngIf="cartHide">
+                <div class="book_details" *ngFor="let cart of cartItems">
+                    <div><img class="bookImage" [src]="cart?.bookImage" alt=""></div>
+                    <div class="bookInfo">
+                        <div class="bookName">{{cart?.bookName}}</div>
+                        <div class="authorName">by {{cart?.authorName}}</div>
+                        <div class="book_cost">
+                            <p class="discountPrice">Rs.{{cart.discountPrice}}</p>
+                            <p class="actualPrice"><s>Rs.{{cart.actualPrice}}</s></p>
+                        </div>
+                        <div class="cartButtons">
+                            <button class="minus_button" (click)="minusCartBook(cart)" [disabled]="cart?.bookQuantity==1">-</button>
+                            <p>{{cart.bookQuantity}}</p>
+                            <button class="plus_button" (click)="plusCartBook(cart)">+</button>
+                            <span class="removetext" (click)="removeFromCart(cart.cartId)">Remove</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="removebutton">
+                    <button class="orderButton">Place Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

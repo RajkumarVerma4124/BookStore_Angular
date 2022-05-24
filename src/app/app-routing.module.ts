@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthenticationGuard } from './authentication.guard';
 import { AllbooksComponent } from './components/allbooks/allbooks.component';
+import { CartComponent } from './components/cart/cart.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
 import { LoginComponent } from './components/login/login.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
       { path: '', redirectTo: '/dashboard/allbooks', pathMatch: 'full' },
       { path: 'allbooks', component: AllbooksComponent },
       { path: 'quickview/:bookId', component: QuickviewComponent },
+      { path: 'cart', component: CartComponent },
     ]
   },
   { path: '**', component: PagenotfoundComponent }

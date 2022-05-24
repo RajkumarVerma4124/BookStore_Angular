@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../services/dataServices/data.service'
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from 'src/app/services/bookServices/book.service';
+import { CartService } from 'src/app/services/cartServices/cart.service';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 @Component({
@@ -17,7 +17,8 @@ export class QuickviewComponent implements OnInit {
   comment: any;
   ratingValue: any = 0;
   feedbackList: any = [];
-  constructor(private bookService: BookService, private router: Router, private snackBar: MatSnackBar, 
+  bookQuantity: number = 1;
+  constructor(private bookService: BookService, private cartService: CartService, private router: Router, private snackBar: MatSnackBar, 
     private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -79,5 +80,28 @@ export class QuickviewComponent implements OnInit {
 
   getShortName(fullName: any) {
     return fullName.split(' ').map((n: any) => n[0]).join('');
+  }
+
+  addToCart(bookData: any) {
+    let reqData = {
+      bookId: bookData.bookId,
+      bookQuantity: this.bookQuantity
+      
+    }
+    this.cartService.addToCart(reqData).subscribe((response: any) => {
+      console.log("Add To Cart Successfully", response);
+      this.snackBar.open("Add To Cart Successfully", 'Success', {
+        duration: 4000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      })
+    }, error => {
+      console.log(error);
+      this.snackBar.open(error.error.message, 'Failed', {
+        duration: 4000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      })
+    })
   }
 }

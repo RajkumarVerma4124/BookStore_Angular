@@ -4,7 +4,7 @@
             <button mat-icon-button class="book-icon" aria-label="Example icon-button with menu icon">
                 <img src="../../../assets/images/booklogo.png" alt="">
              </button>
-            <span class="dashboard_text">Raj Bookstore</span>
+            <span class="dashboard_text" (click)="goToHome()">Raj Bookstore</span>
         </div>
         <div class="header_middle">
             <div class="div_wrapper" id="searchBox" [ngClass]="!searchBarActive == true ? 'header__middleLeft' : 'header__middleLeft active'" (click)="setSearchActive()">
@@ -42,7 +42,7 @@
                     <p style="margin-left: 5px; color: #7e7e7e;margin-top: 10px">Wishlist</p>
                 </div>
             </mat-menu>
-            <div class="img_cart_container">
+            <div class="img_cart_container" (click)="goToCart()">
                 <img class="img_cart" src="../../../assets/images/cart.svg">
                 <span class="person_name">Cart</span>
             </div>

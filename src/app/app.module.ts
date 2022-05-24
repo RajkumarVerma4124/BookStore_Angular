@@ -28,6 +28,7 @@ import { FilterbookPipe } from './pipe/filterbook.pipe';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { QuickviewComponent } from './components/quickview/quickview.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { QuickviewComponent } from './components/quickview/quickview.component';
     DashboardComponent,
     AllbooksComponent,
     FilterbookPipe,
-    QuickviewComponent
+    QuickviewComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

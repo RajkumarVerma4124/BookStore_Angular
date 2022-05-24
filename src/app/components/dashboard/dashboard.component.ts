@@ -58,4 +58,12 @@ export class DashboardComponent implements OnInit {
   login() {
     this.router.navigateByUrl('/login');
   }
+
+  goToCart(){
+    this.router.navigateByUrl('/dashboard/cart');
+  }
+
+  goToHome() {
+    this.router.navigateByUrl('/dashboard/allbooks');
+  }
 }
