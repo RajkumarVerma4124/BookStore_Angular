@@ -136,8 +136,8 @@
 
 ::ng-deep .usermenu {
     padding-top: 15px;
-    width: 261px;
-    height: 215px;
+    width: 226px;
+    height: auto;
     margin-top: 25px;
     margin-left: -100px;
 }
@@ -152,6 +152,9 @@
     padding: 0px 5px;
     margin-bottom: 15px;
     border-radius: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media (max-width: 926px) {

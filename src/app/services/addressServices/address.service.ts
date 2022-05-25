@@ -5,51 +5,59 @@ import { HttpService } from '../httpServices/http.service';
 @Injectable({
   providedIn: 'root'
 })
-export class BookService {
+export class AddressService {
   token: any;
-
-  constructor(private httpService: HttpService) { 
+  constructor(private httpService: HttpService) {
     this.token = localStorage.getItem('token')
   }
 
-  getallbooks() {
+  addAddress(reqData: any) {
     let header = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
         'Authorization': `Bearer ${this.token}`
       })
     }
-    return this.httpService.getService('/Book/GetAll', true, header)
+    return this.httpService.postService('/Address/Add', reqData, true, header);
   }
 
-  getbook(bookId: any) {
+  updateAddress(reqData: any) {
     let header = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
         'Authorization': `Bearer ${this.token}`
       })
     }
-    return this.httpService.getService('/Book/Get?bookId=' + bookId, true, header)
+    return this.httpService.putService('/Address/Update', reqData, true, header);
   }
 
-  addFeedback(reqData: any) {
-    console.log(reqData)
+  deleteAddress(typeId: any) {
     let header = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
         'Authorization': `Bearer ${this.token}`
       })
     }
-    return this.httpService.postService('/Feedback/Add', reqData, true, header);
+    return this.httpService.deleteService('/Address/Delete?addressId='+typeId, true, header);
   }
 
-  getAllFeedback(bookId: any){
+  getAddress(typeId: any) {
     let header = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
-        // 'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${this.token}`
       })
     }
-    return this.httpService.getService('/Feedback/GetAll?bookId=' + bookId, false, header)
+    return this.httpService.getService('/Address/Get?typeId='+typeId, true, header);
+  }
+
+  getAllAddress() {
+    let header = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      })
+    }
+    return this.httpService.getService('/Address/GetAll', true, header);
   }
 }

@@ -26,8 +26,8 @@
                         <div class="bookName">{{cart?.bookName}}</div>
                         <div class="authorName">by {{cart?.authorName}}</div>
                         <div class="book_cost">
-                            <p class="discountPrice">Rs.{{cart.discountPrice}}</p>
-                            <p class="actualPrice"><s>Rs.{{cart.actualPrice}}</s></p>
+                            <p class="discountPrice">Rs.{{cart.discountPrice*cart.bookQuantity}}</p>
+                            <p class="actualPrice"><s>Rs.{{cart.actualPrice*cart.bookQuantity}}</s></p>
                         </div>
                         <div class="cartButtons">
                             <button class="minus_button" (click)="minusCartBook(cart)" [disabled]="cart?.bookQuantity==1">-</button>
@@ -38,7 +38,104 @@
                     </div>
                 </div>
                 <div class="removebutton">
-                    <button class="orderButton">Place Order</button>
+                    <button class="orderButton" (click)="cartShowHide()">Continue</button>
+                </div>
+            </div>
+        </div>
+        <div class="address_container">
+            <div *ngIf="!addressHeaderHide" style="margin-top: 13px; font-weight: 500; font-size: 14px; cursor: pointer;" (click)="addressHeaderShowHide()">
+                Address&nbsp;Details
+            </div>
+            <div *ngIf="addressHeaderHide" class="customer_address">
+                <form [formGroup]="customerAddressForm">
+                    <div class="address_header" *ngIf="addressHeaderHide">
+                        <p style="margin-top: 13px; font-weight: 500; font-size: 14px; cursor: pointer;" (click)="addressHeaderShowHide()">
+                            Customer&nbsp;Details
+                        </p>
+                        <button class="address_add_button" (click)="addressShowHide()" *ngIf="addressHeaderShowHide && !addressHide">Add New Address</button>
+                        <button class="address_add_button" (click)="addressShowHide()" *ngIf="addressHeaderShowHide && addressHide">Close New Address</button>
+                    </div>
+                    <div class="customer_info" *ngIf="addressHide">
+                        <div class="fullName">
+                            <mat-label>Full Name</mat-label>
+                            <mat-form-field appearance="outline">
+                                <input disabled matInput [value]="fullName">
+                            </mat-form-field>
+                        </div>
+                        <div class="fullName">
+                            <mat-label>Mobile Number</mat-label>
+                            <mat-form-field appearance="outline">
+                                <input disabled matInput [value]="mobileNumber">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="cutomer_address_info" *ngIf="addressHide">
+                        <div class="address_edit">
+                            <div>
+                                <p>Address</p>
+                            </div>
+                            <div>
+                                <button mat-button class="address_edit_button" (click)="editAddress()" *ngIf="customerAdressObj?.address !== 'undefined'">Edit Address</button>
+                            </div>
+                        </div>
+                        <div *ngIf="submitted===true">
+                            <textarea type="text" class="addressInput" formControlName="address" [attr.disabled]="submitted"></textarea>
+                        </div>
+                        <div *ngIf="submitted===false">
+                            <textarea type="text" class="addressInput" formControlName="address" name="address" [value]="customerAdressObj?.address"></textarea>
+                        </div>
+                        <div class="customer_city">
+                            <div class="fullName">
+                                <mat-label>city/town</mat-label>
+                                <mat-form-field appearance="outline">
+                                    <input matInput [attr.disabled]="submitted" placeholder="City" formControlName="city" [value]="customerAdressObj?.city">
+                                    <!-- <mat-error>Enter City Name</mat-error> -->
+                                </mat-form-field>
+                            </div>
+                            <div class="fullName">
+                                <mat-label>state</mat-label>
+                                <mat-form-field appearance="outline">
+                                    <input [attr.disabled]="submitted" matInput type="text" placeholder="State" formControlName="state" [value]="customerAdressObj?.state">
+                                    <!-- <mat-error>Enter State Name</mat-error> -->
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="addresstype" fxLayout="column" fxLayoutGap="7px">
+                            <span>Type</span>
+                            <mat-radio-group aria-label="Select an option">
+                                <mat-radio-button *ngIf="isUpdate == false" [disabled]="submitted" type="button" class="home" (click)="addressTypevalue(1)" value="1">Home</mat-radio-button>
+                                <mat-radio-button *ngIf="isUpdate == true" [disabled]="submitted" type="button" class="home" (click)="getAddress(1)" (click)="addressTypevalue(1)" value="1">Home</mat-radio-button>
+                                <mat-radio-button *ngIf="isUpdate == false" [disabled]="submitted" type="button" class="work" (click)="addressTypevalue(2)" value="2">Work</mat-radio-button>
+                                <mat-radio-button *ngIf="isUpdate == true" [disabled]="submitted" type="button" class="work" (click)="getAddress(2)" (click)="addressTypevalue(1)" value="2">Work</mat-radio-button>
+                                <mat-radio-button *ngIf="isUpdate == false" [disabled]="submitted" type="button" class="other" (click)="addressTypevalue(3)" value="3">Others</mat-radio-button>
+                                <mat-radio-button *ngIf="isUpdate == true" [disabled]="submitted" type="button" class="other" (click)="getAddress(3)" (click)="addressTypevalue(1)" value="3">Others</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <button type="submit" (click)="onSubmit(customerAdressObj)" class="continueButton">CONTINUE</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="summary_container">
+            <div class="cart_head">
+                <div class="summary_head" (click)="summaryShowHide()">
+                    Orders Summary
+                </div>
+            </div>
+            <div *ngIf="summaryHide">
+                <div class="book_details" *ngFor="let cart of cartItems">
+                    <div><img class="bookImage" [src]="cart?.bookImage" alt=""></div>
+                    <div class="bookInfo">
+                        <div class="bookName">{{cart?.bookName}}</div>
+                        <div class="authorName">by {{cart?.authorName}}</div>
+                        <div class="book_cost">
+                            <p class="discountPrice">Rs.{{cart.discountPrice*cart.bookQuantity}}</p>
+                            <p class="actualPrice"><s>Rs.{{cart.actualPrice*cart.bookQuantity}}</s></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="placeorderbutton">
+                    <button class="orderButton">Checkout</button>
                 </div>
             </div>
         </div>

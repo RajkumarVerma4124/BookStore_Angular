@@ -16,7 +16,7 @@
                 <p>Signup</p>
             </div>
         </div>
-        <form #myForm="ngForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
+        <form #myForm="ngForm" [formGroup]="loginForm" class="form">
             <div class="">
                 <mat-label style="font-size: 12px;">Email Id</mat-label>
                 <mat-form-field appearance="outline">
@@ -37,7 +37,7 @@
                 </mat-form-field>
             </div>
             <div>
-                <button mat-flat-button color="primary" class="forgotPassButton" (click)="forgotpassword()">Forgot Password?</button>
+                <button mat-flat-button color="primary" type="button" class="forgotPassButton" (click)="forgotpassword()">Forgot Password?</button>
             </div>
             <div class="radiotype" fxLayout="row">
                 <mat-radio-group aria-label="Select an option">
@@ -46,7 +46,7 @@
                 </mat-radio-group>
             </div>
             <div>
-                <button class="signupbutton" mat-flat-button>Login</button>
+                <button class="signupbutton" (click)="onSubmit()" mat-flat-button>Login</button>
             </div>
             <div class="or">
                 <h2>OR</h2>

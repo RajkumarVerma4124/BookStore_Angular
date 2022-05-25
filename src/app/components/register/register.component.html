@@ -16,7 +16,7 @@
                 <p>Signup</p>
             </div>
         </div>
-        <form #myForm="ngForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form">
+        <form #myForm="ngForm" [formGroup]="registerForm" class="form">
             <div>
                 <mat-label style="font-size: 12px;">Full Name</mat-label>
                 <mat-form-field appearance="outline">
@@ -53,7 +53,7 @@
                 </mat-form-field>
             </div>
             <div>
-                <button class="signupbutton" mat-flat-button>Signup</button>
+                <button class="signupbutton" (click)="onSubmit()" mat-flat-button>Signup</button>
             </div>
         </form>
     </div>

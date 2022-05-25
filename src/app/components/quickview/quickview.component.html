@@ -71,19 +71,20 @@
                         <div class="starContainer">
                             <div class="star_icon">
                                 <input type="radio" name="rate" id="rate-5" [(ngModel)]="ratingValue" value="5">
-                                <label for="rate-5" class="fa fa-star-o"></label>
-
+                                <label for="rate-5" class="fa fa-star-o" *ngIf="ratingValue<5"></label>
+                                <label for="rate-5" class="fa fa-star" *ngIf="ratingValue>=5"></label>
                                 <input type="radio" name="rate" id="rate-4" [(ngModel)]="ratingValue" value="4">
-                                <label for="rate-4" class="fa fa-star-o"></label>
-
+                                <label for="rate-4" class="fa fa-star-o" *ngIf="ratingValue<4"></label>
+                                <label for="rate-4" class="fa fa-star" *ngIf="ratingValue>=4"></label>
                                 <input type="radio" name="rate" id="rate-3" [(ngModel)]="ratingValue" value="3">
-                                <label for="rate-3" class="fa fa-star-o"></label>
-
+                                <label for="rate-3" class="fa fa-star-o" *ngIf="ratingValue<3"></label>
+                                <label for="rate-3" class="fa fa-star" *ngIf="ratingValue>=3"></label>
                                 <input type="radio" name="rate" id="rate-2" [(ngModel)]="ratingValue" value="2">
-                                <label for="rate-2" class="fa fa-star-o"></label>
-
+                                <label for="rate-2" class="fa fa-star-o" *ngIf="ratingValue<2"></label>
+                                <label for="rate-2" class="fa fa-star" *ngIf="ratingValue>=2"></label>
                                 <input type="radio" name="rate" id="rate-1" [(ngModel)]="ratingValue" value="1">
-                                <label for="rate-1" class="fa fa-star-o"></label>
+                                <label for="rate-1" class="fa fa-star-o" *ngIf="ratingValue<1"></label>
+                                <label for="rate-1" class="fa fa-star" *ngIf="ratingValue>=1"></label>
                             </div>
                         </div>
                         <!-- Feedback Comment -->
@@ -102,7 +103,17 @@
                                 <span style="color: black; font-size: 15px; margin-left: 10px">{{feedback.fullName}}</span>
                             </div>
                             <div class="feedback_comment feedbackrating">
-                                <span class="feedbackrating">Rating : <span style="color: #A03037; font-size: 15px; font-weight: bold">{{feedback.rating}}</span></span>
+                                <span class="feedbackrating">Rating : </span>
+                                <div for="rate-1" class="fa fa-star-o" *ngIf="feedback.rating<1"></div>
+                                <div style="color: #FFCE00" for="rate-1" class="fa fa-star" *ngIf="feedback.rating>=1"></div>
+                                <div for="rate-2" class="fa fa-star-o" *ngIf="feedback.rating<2"></div>
+                                <div style="color: #FFCE00" for="rate-2" class="fa fa-star" *ngIf="feedback.rating>=2"></div>
+                                <div for="rate-3" class="fa fa-star-o" *ngIf="feedback.rating<3"></div>
+                                <div style="color: #FFCE00" for="rate-3" class="fa fa-star" *ngIf="feedback.rating>=3"></div>
+                                <div for="rate-4" class="fa fa-star-o" *ngIf="feedback.rating<4"></div>
+                                <div style="color: #FFCE00" for="rate-4" class="fa fa-star" *ngIf="feedback.rating>=4"></div>
+                                <div for="rate-5" class="fa fa-star-o" *ngIf="feedback.rating<5"></div>
+                                <div style="color: #FFCE00" for="rate-5" class="fa fa-star" *ngIf="feedback.rating>=5"></div>
                             </div>
                             <div class="feedback_comment">
                                 <span style="color: #878787; font-size: 13px;">{{feedback.comment}}</span>
