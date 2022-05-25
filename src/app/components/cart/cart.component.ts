@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BookService } from 'src/app/services/bookServices/book.service';
 import { AddressService } from 'src/app/services/addressServices/address.service';
+import { OrderService } from 'src/app/services/orderServices/order.service';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { CartService } from 'src/app/services/cartServices/cart.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -32,8 +32,8 @@ export class CartComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
-  constructor(private bookService: BookService, private addressService: AddressService, private router: Router, private snackBar: MatSnackBar,
-    private cartService: CartService, private formbuilder: FormBuilder) { }
+  constructor( private addressService: AddressService, private router: Router, private snackBar: MatSnackBar,
+    private cartService: CartService, private formbuilder: FormBuilder, private orderService: OrderService) { }
 
   ngOnInit(): void {
     this.getAllCart();
@@ -221,5 +221,41 @@ export class CartComponent implements OnInit {
         verticalPosition: this.verticalPosition,
       })
     })
+  }
+
+
+  addOrder(addressId: any) {
+    console.log(addressId)
+    if(addressId != null)
+    { 
+      console.log("addressfound")
+      let addressObj = {
+        addressId: addressId
+      }
+      this.orderService.addOrder(addressObj).subscribe((response: any) => {
+        console.log("Order Placed Successfully", response);
+        this.snackBar.open("Order Placed Successfully", 'Success', {
+          duration: 4000,
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+        })
+        this.router.navigateByUrl("dashboard/orderplaced")
+      }, error => {
+        console.log(error);
+        this.snackBar.open(error.error.message, 'Failed', {
+          duration: 4000,
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+        })
+      })
+    }
+    else
+    { 
+      this.snackBar.open("Add The Address For Order", 'Failed', {
+        duration: 4000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      })
+    }
   }
 }

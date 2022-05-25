@@ -4,7 +4,7 @@
             <button mat-icon-button class="book-icon" aria-label="Example icon-button with menu icon">
                 <img src="../../../assets/images/booklogo.png" alt="">
              </button>
-            <span class="dashboard_text" (click)="goToHome()">Raj Bookstore</span>
+            <span class="dashboard_text" style="cursor:pointer" (click)="goToHome()">Raj Bookstore</span>
         </div>
         <div class="header_middle">
             <div class="div_wrapper" id="searchBox" [ngClass]="!searchBarActive == true ? 'header__middleLeft' : 'header__middleLeft active'" (click)="setSearchActive()">
@@ -26,7 +26,7 @@
             <mat-menu #logoutmenu="matMenu" class="usermenu">
                 <p *ngIf="fullName == null" style="text-align: left; color: #0A0102; margin-left: 20px;">Welcome</p>
                 <p *ngIf="fullName == null" style="text-align: left; color: #878787; margin-left: 20px; font-size:12px; margin-top:-3px; display: flex; flex-wrap: wrap;">To access account and manage orders</p>
-                <div *ngIf="fullName != null" fxLayout="row" fxLayoutAlign="start center" style="margin-left: 25px;">
+                <div *ngIf="fullName != null" fxLayout="row" fxLayoutAlign="start center" style="margin-left: 21px;">
                     <!-- <img style="height:15px; width:15px;" src="../../../assets/images/orders.svg" alt=""> -->
                     <mat-icon style="color: #878787;height:15px; width:15px; margin-top:-15px; margin-right:5px">person_outline</mat-icon>
                     <p style="margin-left: 5px; color: #7e7e7e; margin-top: 5px">Profile</p>
@@ -37,7 +37,7 @@
                 <mat-divider *ngIf="fullName == null"></mat-divider>
                 <div fxLayout="row" fxLayoutAlign="start center" style="margin-left: 25px;">
                     <img style="height:15px; width:15px;" src="../../../assets/images/orders.svg" alt="">
-                    <p style="margin-left: 5px; color: #7e7e7e; margin-top: 10px">Orders</p>
+                    <p style="margin-left: 5px; color: #7e7e7e; margin-top: 10px; cursor: pointer" routerLink="/dashboard/orderlist">Orders</p>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="start center" style="margin-left: 25px;">
                     <img style="height:15px; width:15px;" src="../../../assets/images/favorite.svg" alt="">

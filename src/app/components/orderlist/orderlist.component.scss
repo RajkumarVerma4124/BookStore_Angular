@@ -1,0 +1,129 @@
+.order_container {
+    margin: 0 150px;
+}
+
+.order_header {
+    margin: 15px 15px;
+}
+
+.ordered_book_container {
+    border: 2px solid #DCDCDC;
+    width: 87%;
+    height: auto;
+    padding: 20px 30px;
+    margin-left: 15px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.book_details {
+    display: flex;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.bookInfo {
+    margin-left: 30px;
+    font-size: 15px;
+    flex-wrap: wrap;
+}
+
+.bookImage {
+    height: 84px;
+    width: 65px;
+}
+
+.bookName {
+    font-size: 14px;
+    color: #0A0102;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.authorName {
+    font-size: 13px;
+    color: #9D9D9D;
+    margin-bottom: 5px;
+}
+
+.book_cost {
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+}
+
+.discountPrice {
+    font-family: normal normal bold 12px/16px Roboto;
+    color: #0A0102;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.actualPrice {
+    margin-left: 10px;
+    font-size: 12px;
+    font-family: normal normal normal 10px/13px Roboto;
+    color: #878787;
+    font-weight: 400;
+}
+
+.orderTime {
+    font-family: normal normal bold 12px/16px Roboto;
+    color: #0A0102;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.book_container {
+    display: flex;
+}
+
+.time_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: -55px;
+}
+
+.ordered_dot {
+    font-size: 70px;
+    color: #26A541;
+    margin-right: 5px;
+}
+
+@media (max-width: 690px) {
+    .ordered_book_container {
+        flex-direction: column;
+        margin-left: 0px;
+    }
+    .time_container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .order_container {
+        margin: 0px;
+    }
+    .order_header {
+        margin: 15px 15px;
+    }
+    .ordered_book_container {
+        margin-left: 5%;
+        width: 80%;
+    }
+}
+
+@media (max-width: 450px) {
+    .ordered_book_container {
+        margin: 2%;
+    }
+}

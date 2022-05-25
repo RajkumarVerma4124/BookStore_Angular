@@ -1,0 +1,28 @@
+<div class="order_container">
+    <div class="order_header">
+        <p style="font-weight: 500;"><span style="color: #9D9D9D;">Home/ </span>My Order</p>
+    </div>
+    <div class="book_details" *ngFor="let order of orderList">
+        <div class="ordered_book_container">
+            <div class="book_container">
+                <div><img class="bookImage" [src]="order?.bookImage" alt=""></div>
+                <div class="bookInfo">
+                    <div class="bookName">{{order?.bookName}}</div>
+                    <div class="authorName">by {{order?.authorName}}</div>
+                    <div class="book_cost">
+                        <p class="discountPrice">Rs.{{order?.orderTotalPrice}}</p>
+                        <p class="actualPrice"><s>Rs.{{order?.actualTotalPrice}}</s></p>
+                    </div>
+                </div>
+            </div>
+            <div class="time_container">
+                <div style="margin-top: -30px">
+                    <span class="ordered_dot">.</span>
+                </div>
+                <div>
+                    <p class="orderTime">Order Placed on {{getformatedDate(order?.orderDate)}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
