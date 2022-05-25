@@ -1,0 +1,116 @@
+.wishlist_container {
+    margin: 0px 150px;
+}
+
+.wishlist_main_header {
+    margin: 15px 0;
+}
+
+.wishlist_sub_header {
+    display: flex;
+    border: 1px solid #E4E4E4;
+    height: 55px;
+    padding: 0px 30px;
+    background-color: #F5F5F5;
+    justify-content: center;
+}
+
+.wishlist_book_container {
+    width: 90%;
+}
+
+.book_details {
+    display: flex;
+    border: 1px solid #E4E4E4;
+    padding: 20px 30px;
+    justify-content: space-between;
+}
+
+.bookInfo {
+    margin-left: 30px;
+    font-size: 15px;
+    flex-wrap: wrap;
+}
+
+.bookImage {
+    height: 84px;
+    width: 65px;
+}
+
+.bookName {
+    font-size: 14px;
+    color: #0A0102;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.authorName {
+    font-size: 13px;
+    color: #9D9D9D;
+    margin-bottom: 5px;
+}
+
+.book_cost {
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+}
+
+.discountPrice {
+    font-family: normal normal bold 12px/16px Roboto;
+    color: #0A0102;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.actualPrice {
+    margin-left: 10px;
+    font-size: 12px;
+    font-family: normal normal normal 10px/13px Roboto;
+    color: #878787;
+    font-weight: 400;
+}
+
+.orderTime {
+    font-family: normal normal bold 12px/16px Roboto;
+    color: #0A0102;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.book_container {
+    display: flex;
+}
+
+.time_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: -55px;
+}
+
+.ordered_dot {
+    font-size: 70px;
+    color: #26A541;
+    margin-right: 5px;
+}
+
+@media (max-width: 690px) {
+    .wishlist_book_container {
+        width: 90%;
+    }
+    .wishlist_container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin: 0%;
+        margin-left: 5%;
+    }
+}
+
+@media (max-width: 450px) {
+    .wishlist_book_container {
+        margin-bottom: 30px;
+    }
+}

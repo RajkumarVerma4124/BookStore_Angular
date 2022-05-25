@@ -29,6 +29,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { QuickviewComponent } from './components/quickview/quickview.component';
 import { CartComponent } from './components/cart/cart.component';
+import { OrderplacedComponent } from './components/orderplaced/orderplaced.component';
+import { OrderlistComponent } from './components/orderlist/orderlist.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { CartComponent } from './components/cart/cart.component';
     AllbooksComponent,
     FilterbookPipe,
     QuickviewComponent,
-    CartComponent
+    CartComponent,
+    OrderplacedComponent,
+    OrderlistComponent,
+    WishlistComponent
   ],
   imports: [
     BrowserModule,

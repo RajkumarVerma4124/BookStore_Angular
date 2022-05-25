@@ -22,9 +22,9 @@
                             <button mat-raised-button class="addtobag">Notify Me</button>
                         </div>
                         <div fxLayout="row" fxLayoutAlign="start center">
-                            <button mat-flat-button class="wishlist">
-                            <mat-icon class="wishlistIcon">favorite</mat-icon>WISHLIST
-                        </button>
+                            <button mat-flat-button class="wishlist" (click)="addWishlist(booksData.bookId)">
+                                <mat-icon class="wishlistIcon">favorite</mat-icon>WISHLIST
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,30 @@
+<div class="wishlist_container">
+    <div class="wishlist_main_header">
+        <p style="font-weight: 500; color: #0A0102"><span style="color: #9D9D9D;">Home/ </span>My wishlist</p>
+    </div>
+    <div class="wishlist_book_container">
+        <div class="wishlist_sub_header" fxLayout="column">
+            <p style="font-weight: 500; color: #0A0102;font-size: 16px; margin-top: 14px;">My Wishlist ({{wishListCount}})
+            </p>
+        </div>
+        <div class="ordered_book_container">
+            <div class="book_details" *ngFor="let list of wishList">
+                <div class="book_container">
+                    <div><img class="bookImage" [src]="list?.bookImage" alt=""></div>
+                    <div class="bookInfo">
+                        <div class="bookName">{{list?.bookName}}</div>
+                        <div class="authorName">by {{list?.authorName}}</div>
+                        <div class="book_cost">
+                            <p class="discountPrice">Rs.{{list?.discountPrice}}</p>
+                            <p class="actualPrice"><s>Rs.{{list?.actualPrice}}</s></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="time_container">
+                    <mat-icon style="color: #9D9D9D" (click)="deleteWishlist(list?.wishlistId)" matTooltip="Remove Book">delete_outline</mat-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

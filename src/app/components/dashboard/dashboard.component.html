@@ -41,7 +41,7 @@
                 </div>
                 <div fxLayout="row" fxLayoutAlign="start center" style="margin-left: 25px;">
                     <img style="height:15px; width:15px;" src="../../../assets/images/favorite.svg" alt="">
-                    <p style="margin-left: 5px; color: #7e7e7e;margin-top: 10px">Wishlist</p>
+                    <p style="margin-left: 5px; color: #7e7e7e;margin-top: 10px;cursor: pointer" routerLink="/dashboard/wishlist">Wishlist</p>
                 </div>
                 <div *ngIf="fullName != null">
                     <button class="btnforprofile" matTooltip="Logout" mat-raised-button (click)="logout()">logout</button>

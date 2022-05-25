@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from 'src/app/services/bookServices/book.service';
 import { CartService } from 'src/app/services/cartServices/cart.service';
+import { WishlistService } from 'src/app/services/wishlistServices/wishlist.service';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 @Component({
@@ -19,7 +20,7 @@ export class QuickviewComponent implements OnInit {
   feedbackList: any = [];
   bookQuantity: number = 1;
   constructor(private bookService: BookService, private cartService: CartService, private router: Router, private snackBar: MatSnackBar, 
-    private activeRoute: ActivatedRoute) { }
+    private activeRoute: ActivatedRoute, private wishlistService: WishlistService) { }
 
   ngOnInit(): void {
     this.booksId = this.activeRoute.snapshot.paramMap.get('bookId');
@@ -91,6 +92,24 @@ export class QuickviewComponent implements OnInit {
     this.cartService.addToCart(reqData).subscribe((response: any) => {
       console.log("Add To Cart Successfully", response);
       this.snackBar.open("Add To Cart Successfully", 'Success', {
+        duration: 4000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      })
+    }, error => {
+      console.log(error);
+      this.snackBar.open(error.error.message, 'Failed', {
+        duration: 4000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      })
+    })
+  }
+
+  addWishlist(bookId: any) {
+    this.wishlistService.addWishlist(bookId).subscribe((response: any) => {
+      console.log("Added To Wishlist Succesfully", response);
+      this.snackBar.open(response.data, 'Success', {
         duration: 4000,
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,

@@ -23,7 +23,7 @@ export class OrderService {
     return this.httpService.postService('/Order/Add', reqData, true, header);
   }
 
-  getAllFeedback(bookId: any) {
+  getAllOrder() {
     let header = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',

@@ -13,7 +13,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CartComponent implements OnInit {
   cartItems: any;
-  cartItemsCount: any;
+  cartItemsCount: any = 0;
   fullName: any;
   mobileNumber: any;
   bookQuantity: number = 1;
@@ -120,6 +120,7 @@ export class CartComponent implements OnInit {
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
       })
+      window.location.reload();
     })
   }
 
