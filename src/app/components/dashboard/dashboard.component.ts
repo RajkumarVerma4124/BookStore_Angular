@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/dataServices/data.service'
 import { Router } from '@angular/router';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { CartService } from 'src/app/services/cartServices/cart.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,17 +20,17 @@ export class DashboardComponent implements OnInit {
   bookQuantity: number = 0;
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+  cartItems: any;
+  cartItemsCount: number = 0;
 
-  constructor(private dataService: DataService, private snackBar: MatSnackBar, private router: Router) {
+  constructor(private dataService: DataService, private snackBar: MatSnackBar, private router: Router, private cartService: CartService) {
     this.dataService.recievedBookQuanitity.subscribe((response: any) => {
       console.log("Data Recieved", response);
-      var newBookQuantity = Number(response);
-      this.tempbookQuantity = this.tempbookQuantity + newBookQuantity
+      this.getAllCart();
     })
     this.dataService.recievedremoveBookQuanitity.subscribe((response: any) => {
       console.log("Data Recieved", response);
-      var tempremovedQuantity = Number(response);
-      this.tempbookQuantity = this.tempbookQuantity - tempremovedQuantity
+      this.getAllCart();
     })
  }
 
@@ -78,8 +79,7 @@ export class DashboardComponent implements OnInit {
   }
 
   goToCart(){
-    this.bookQuantity = this.tempbookQuantity;
-    if (this.bookQuantity > 0) {
+    if (this.cartItemsCount > 0) {
       this.router.navigateByUrl('/dashboard/cart');
     }
     else {
@@ -90,6 +90,26 @@ export class DashboardComponent implements OnInit {
       })
     }
   }
+
+  getAllCart() {
+    this.cartService.getAllCart().subscribe((response: any) => {
+      console.log("Got The Cart Successfully", response);
+      this.cartItems = response.data;
+      this.cartItemsCount = 0;
+      this.cartItems.forEach((cartItem: any) => {
+        this.cartItemsCount = this.cartItemsCount + cartItem.bookQuantity
+      })
+      console.log(this.cartItemsCount)
+    }, error => {
+      console.log(error);
+      this.snackBar.open(error.error.message, 'Failed', {
+        duration: 4000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      })
+    })
+  }
+
 
   goToHome() {
     this.router.navigateByUrl('/dashboard/allbooks');

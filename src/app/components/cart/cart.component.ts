@@ -100,6 +100,7 @@ export class CartComponent implements OnInit {
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
       })
+      this.dataService.SendRemoveBookQuantity(cartData.bookQuantity);
       this.getAllCart();
     }, error => {
       console.log(error);
@@ -109,7 +110,6 @@ export class CartComponent implements OnInit {
         verticalPosition: this.verticalPosition,
       })
     })
-    this.dataService.SendRemoveBookQuantity(cartData.bookQuantity);
   }
 
   getAllCart() {
@@ -239,7 +239,6 @@ export class CartComponent implements OnInit {
   addressTypevalue(value: any) {
     this.typeId = value;
     this.customerAdressObj = null;
-
   }
 
   editAddress() {
