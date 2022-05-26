@@ -64,11 +64,7 @@
                             <button mat-button type="button" class="address_edit_button" (click)="editAddress()">Edit</button>
                         </div>
                     </div>
-                    <div *ngIf="submitted===true">
-                        <mat-label style="font-size: 13px; font-weight: 500;">Address</mat-label>
-                        <textarea type="text" class="addressInput" placeholder="Address" formControlName="address" [attr.disabled]="submitted"></textarea>
-                    </div>
-                    <div *ngIf="submitted===false" fxLayout="column">
+                    <div fxLayout="column">
                         <mat-label style="font-size: 13px; font-weight: 500;">Address</mat-label>
                         <textarea type="text" class="addressInput" placeholder="Address" formControlName="address" name="address" [value]="customerAdressObj?.address"></textarea>
                     </div>
@@ -76,30 +72,33 @@
                         <div class="fullName">
                             <mat-label>city/town</mat-label>
                             <mat-form-field appearance="outline">
-                                <input matInput [attr.disabled]="submitted" placeholder="City" formControlName="city" [value]="customerAdressObj?.city">
-                                <!-- <mat-error>Enter City Name</mat-error> -->
+                                <div>
+                                    <input matInput placeholder="City" formControlName="city" [value]="customerAdressObj?.city">
+                                </div>
                             </mat-form-field>
                         </div>
                         <div class="fullName">
                             <mat-label>state</mat-label>
                             <mat-form-field appearance="outline">
-                                <input [attr.disabled]="submitted" matInput type="text" placeholder="State" formControlName="state" [value]="customerAdressObj?.state">
-                                <!-- <mat-error>Enter State Name</mat-error> -->
+                                <div>
+                                    <input matInput type="text" placeholder="State" formControlName="state" [value]="customerAdressObj?.state">
+                                </div>
                             </mat-form-field>
                         </div>
                     </div>
                     <div class="addresstype" fxLayout="column" fxLayoutGap="7px">
                         <span>Type</span>
                         <mat-radio-group aria-label="Select an option">
-                            <mat-radio-button *ngIf="isUpdate == false" [disabled]="submitted" type="button" class="home" (click)="addressTypevalue(1)" value="1">Home</mat-radio-button>
-                            <mat-radio-button *ngIf="isUpdate == true" [disabled]="submitted" type="button" class="home" (click)="getAddress(1)" (click)="addressTypevalue(1)" value="1">Home</mat-radio-button>
-                            <mat-radio-button *ngIf="isUpdate == false" [disabled]="submitted" type="button" class="work" (click)="addressTypevalue(2)" value="2">Work</mat-radio-button>
-                            <mat-radio-button *ngIf="isUpdate == true" [disabled]="submitted" type="button" class="work" (click)="getAddress(2)" (click)="addressTypevalue(2)" value="2">Work</mat-radio-button>
-                            <mat-radio-button *ngIf="isUpdate == false" [disabled]="submitted" type="button" class="other" (click)="addressTypevalue(3)" value="3">Others</mat-radio-button>
-                            <mat-radio-button *ngIf="isUpdate == true" [disabled]="submitted" type="button" class="other" (click)="getAddress(3)" (click)="addressTypevalue(2)" value="3">Others</mat-radio-button>
+                            <mat-radio-button *ngIf="isUpdate == false" type="button" class="home" (click)="addressTypevalue(1)" value="1">Home</mat-radio-button>
+                            <mat-radio-button *ngIf="isUpdate == true" type="button" class="home" (click)="updateAddressType(1)" value="1">Home</mat-radio-button>
+                            <mat-radio-button *ngIf="isUpdate == false" type="button" class="work" (click)="addressTypevalue(2)" value="2">Work</mat-radio-button>
+                            <mat-radio-button *ngIf="isUpdate == true" type="button" class="work" (click)="updateAddressType(2)" value="2">Work</mat-radio-button>
+                            <mat-radio-button *ngIf="isUpdate == false" type="button" class="other" (click)="addressTypevalue(3)" value="3">Others</mat-radio-button>
+                            <mat-radio-button *ngIf="isUpdate == true" type="button" class="other" (click)="updateAddressType(3)" value="3">Others</mat-radio-button>
                         </mat-radio-group>
                     </div>
-                    <button type="submit" (click)="onSubmit(customerAdressObj)" class="continueButton">CONTINUE</button>
+                    <button type="submit" (click)="onSubmit(customerAdressObj)" class="continueButton" *ngIf="customerAdressObj?.address == undefined || customerAdressObj == null">Add Address</button>
+                    <button type="submit" (click)="onSubmit(customerAdressObj)" class="continueButton" *ngIf="customerAdressObj?.address != undefined || customerAdressObj != null">Update Address</button>
                 </div>
             </form>
             <div class="addressList_container">
@@ -122,6 +121,14 @@
                             </div>
                             <div *ngIf="address?.typeId==3">
                                 <div class="state">Type : Others </div>
+                            </div>
+                            <div class="buttons_container">
+                                <div>
+                                    <button style="margin-top: 5px; margin-left: -20px;" mat-button type="button" class="address_edit_button" (click)="editAddress()" (click)="getAddressById(address?.addressId)">Edit</button>
+                                </div>
+                                <div>
+                                    <button style="margin-top: 5px;" mat-button type="button" class="address_edit_button" (click)="deleteAddressById(address?.addressId)">Delete</button>
+                                </div>
                             </div>
                             <div>
                                 <mat-divider></mat-divider>

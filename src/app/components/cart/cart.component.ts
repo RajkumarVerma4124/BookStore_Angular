@@ -60,6 +60,7 @@ export class CartComponent implements OnInit {
         verticalPosition: this.verticalPosition,
       })
       this.getAllCart();
+      this.dataService.SendBookQuantity(1);
     }, error => {
       console.log(error);
       this.snackBar.open(error.error.message, 'Failed', {
@@ -77,6 +78,7 @@ export class CartComponent implements OnInit {
       console.log(this.bookQuantity)
       this.cartService.updateCart(cartData.cartId, this.bookQuantity).subscribe((response: any) => {
         console.log("Remove From Cart Successfully", response);
+        this.dataService.SendRemoveBookQuantity(1);
         this.getAllCart();
       }, error => {
         console.log(error);
@@ -126,18 +128,31 @@ export class CartComponent implements OnInit {
     })
   }
 
+  cartShow() {
+    this.cartHide = !this.cartHide;
+  }
+
   cartShowHide() {
     this.cartHide = !this.cartHide;
+    this.addressHeaderHide = !this.addressHeaderHide;
   }
 
   addressHeaderShowHide() {
     this.addressHeaderHide = !this.addressHeaderHide;
   }
+
   addressShowHide() {
     this.addressHide = !this.addressHide;
+  }
+
+  addNewAddress() {
     this.submitted = false;
     this.isUpdate = false;
-
+    this.customerAdressObj = null;
+    this.customerAddressForm.reset();
+    this.customerAddressForm.controls['city'].enable();
+    this.customerAddressForm.controls['state'].enable();
+    this.customerAddressForm.controls['address'].enable();
   }
 
   summaryShowHide() {
@@ -147,7 +162,7 @@ export class CartComponent implements OnInit {
   onSubmit(reqData: any) {
     console.log(reqData)
     if (this.customerAddressForm.valid && this.typeId > 0) {
-      if (reqData?.address == undefined) {
+      if (reqData?.address == undefined || reqData == null) {
         this.submitted = true;
         let reqdata = {
           address: this.customerAddressForm.value.address,
@@ -155,6 +170,7 @@ export class CartComponent implements OnInit {
           state: this.customerAddressForm.value.state,
           typeId: this.typeId
         }
+        console.log(reqdata)
         this.addressService.addAddress(reqdata).subscribe((response: any) => {
           console.log("Address confirmed", response);
           this.snackBar.open("Address Added Successfully", 'Success', {
@@ -162,6 +178,11 @@ export class CartComponent implements OnInit {
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,
           })
+          this.addressHeaderHide = !this.addressHeaderHide;
+          this.summaryHide = !this.summaryHide;
+          this.customerAddressForm.controls['city'].disable();
+          this.customerAddressForm.controls['state'].disable();
+          this.customerAddressForm.controls['address'].disable();
         }, error => {
           console.log(error);
           this.snackBar.open(error.error.message, 'Failed', {
@@ -173,7 +194,6 @@ export class CartComponent implements OnInit {
       }
       else {
         this.submitted = true;
-        console.log("valid data", this.customerAddressForm.value);
         let reqdata = {
           addressId: this.customerAdressObj?.addressId,
           address: this.customerAddressForm.value.address,
@@ -181,13 +201,19 @@ export class CartComponent implements OnInit {
           state: this.customerAddressForm.value.state,
           typeId: this.typeId
         }
+        console.log(reqdata)
         this.addressService.updateAddress(reqdata).subscribe((response: any) => {
           console.log("Address Updated", response);
-          this.snackBar.open("Address Updated Successfully", 'Success', {
+          this.snackBar.open("Address Selected Successfully", 'Success', {
             duration: 4000,
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,
           })
+          this.addressHeaderHide = !this.addressHeaderHide;
+          this.summaryHide = !this.summaryHide;
+          this.customerAddressForm.controls['city'].disable();
+          this.customerAddressForm.controls['state'].disable();
+          this.customerAddressForm.controls['address'].disable();
         }, error => {
           console.log(error);
           this.snackBar.open(error.error.message, 'Failed', {
@@ -206,8 +232,14 @@ export class CartComponent implements OnInit {
     }
   }
 
+  updateTypevalue(value: any) {
+    this.typeId = value;
+  }
+
   addressTypevalue(value: any) {
     this.typeId = value;
+    this.customerAdressObj = null;
+
   }
 
   editAddress() {
@@ -217,6 +249,7 @@ export class CartComponent implements OnInit {
   getAddress(typeId: any) {
     this.addressService.getAddress(typeId).subscribe((response: any) => {
       console.log("Got Address", response);
+      response.data.reverse();
       this.customerAdressObj = response.data[0];
     }, error => {
       console.log(error);
@@ -227,7 +260,6 @@ export class CartComponent implements OnInit {
       })
     })
   }
-
 
   addOrder(addressId: any) {
     console.log(addressId)

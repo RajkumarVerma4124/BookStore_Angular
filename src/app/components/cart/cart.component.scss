@@ -208,7 +208,11 @@
     background-color: #FFFFFF;
     border: 1px solid #DCDCDC;
     resize: none;
-    border-radius: 2px;
+    padding: 8px 8px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: normal normal normal 12px/16px Roboto;
+    border-radius: 5px;
 }
 
 textarea:disabled {

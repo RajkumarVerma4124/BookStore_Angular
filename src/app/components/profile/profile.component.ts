@@ -50,10 +50,16 @@ export class ProfileComponent implements OnInit {
   addNewAddress(){
     this.submitted = false;
     this.isUpdate = false;
+    this.customerAdressObj = null;
+  }
+
+  updateAddressType(value: any){
+    this.typeId = value;
   }
 
   addressTypevalue(value: any) {
     this.typeId = value;
+    this.customerAdressObj = null;
   }
 
   editAddress() {
@@ -63,7 +69,7 @@ export class ProfileComponent implements OnInit {
   onSubmit(addressData: any) {
     console.log(addressData)
     if (this.customerAddressForm.valid && this.typeId > 0) {
-      if (addressData?.address == undefined) {
+      if (addressData?.address == undefined || addressData == null) {
         this.submitted = true;
         let reqdata = {
           address: this.customerAddressForm.value.address,
@@ -80,6 +86,7 @@ export class ProfileComponent implements OnInit {
             verticalPosition: this.verticalPosition,
           })
           this.getAllAddress()
+          this.customerAddressForm.reset();
         }, error => {
           console.log(error);
           this.snackBar.open(error.error.message, 'Failed', {
@@ -90,6 +97,7 @@ export class ProfileComponent implements OnInit {
         })
       }
       else {
+        console.log(addressData)
         this.submitted = true;
         console.log("valid data", this.customerAddressForm.value);
         let reqdata = {
@@ -107,6 +115,7 @@ export class ProfileComponent implements OnInit {
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,
           })
+          this.customerAddressForm.reset();
           this.getAllAddress()
         }, error => {
           console.log(error);
@@ -126,10 +135,29 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  getAddress(typeId: any) {
-    this.addressService.getAddress(typeId).subscribe((response: any) => {
+  getAddressById(addressId: any) {
+    this.addressService.getAddressById(addressId).subscribe((response: any) => {
       console.log("Got Address", response);
-      this.customerAdressObj = response.data[0];
+      this.customerAdressObj = response.data;
+    }, error => {
+      console.log(error);
+      this.snackBar.open(error.error.message, 'Failed', {
+        duration: 4000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      })
+    })
+  }
+
+  deleteAddressById(addressId: any) {
+    this.addressService.deleteAddress(addressId).subscribe((response: any) => {
+      console.log("Deleted Address Succesfully", response);
+      this.snackBar.open("Deleted Address Succesfully", 'Failed', {
+        duration: 4000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      })
+      this.getAllAddress()
     }, error => {
       console.log(error);
       this.snackBar.open(error.error.message, 'Failed', {

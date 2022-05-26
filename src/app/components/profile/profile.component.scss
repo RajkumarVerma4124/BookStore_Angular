@@ -207,6 +207,10 @@ textarea:disabled {
     margin-top: 15px;
 }
 
+.buttons_container {
+    display: flex;
+}
+
 @media (max-width: 1000px) {
     .main_container {
         display: flex;

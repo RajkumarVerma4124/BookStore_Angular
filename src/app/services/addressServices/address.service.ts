@@ -51,6 +51,16 @@ export class AddressService {
     return this.httpService.getService('/Address/Get?typeId='+typeId, true, header);
   }
 
+  getAddressById(addressId: any) {
+    let header = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      })
+    }
+    return this.httpService.getService('/Address/GetById?addressId='+addressId, true, header);
+  }
+
   getAllAddress() {
     let header = {
       headers: new HttpHeaders({
