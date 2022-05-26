@@ -157,6 +157,21 @@
     justify-content: center;
 }
 
+.cart_quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #A03037;
+    font-size: 12px;
+    position: absolute;
+    margin-left: 22px;
+    margin-top: -42px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+}
+
 @media (max-width: 926px) {
     .example-toolbar {
         display: flow-root;

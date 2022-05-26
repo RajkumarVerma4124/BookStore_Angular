@@ -7,8 +7,9 @@
             <div class="book_container">
                 <div><img class="bookImage" [src]="order?.bookImage" alt=""></div>
                 <div class="bookInfo">
-                    <div class="bookName">{{order?.bookName}}</div>
+                    <div class="bookName">{{order?.bookName}} </div>
                     <div class="authorName">by {{order?.authorName}}</div>
+                    <div class="authorName">Total {{order?.bookQuantity}} Books Purchased</div>
                     <div class="book_cost">
                         <p class="discountPrice">Rs.{{order?.orderTotalPrice}}</p>
                         <p class="actualPrice"><s>Rs.{{order?.actualTotalPrice}}</s></p>
@@ -20,7 +21,7 @@
                     <span class="ordered_dot">.</span>
                 </div>
                 <div>
-                    <p class="orderTime">Order Placed on {{getformatedDate(order?.orderDate)}}</p>
+                    <p class="orderTime">Order Placed on {{order?.orderDate}}</p>
                 </div>
             </div>
         </div>

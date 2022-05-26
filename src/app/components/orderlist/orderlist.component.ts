@@ -25,6 +25,7 @@ export class OrderlistComponent implements OnInit {
     this.orderService.getAllOrder().subscribe((response: any) => {
       console.log("Got The Cart Successfully", response);
       this.orderList = response.data;
+      this.orderList.reverse();
     }, error => {
       console.log(error);
       this.snackBar.open(error.error.message, 'Failed', {
@@ -37,12 +38,14 @@ export class OrderlistComponent implements OnInit {
 
   getformatedDate(date: any) {
     console.log(date)
-    let newdate = date.split('-')
-    var day = newdate[0]
-    var month = newdate[1]
-    this.orderedDate = this.pipe.transform(month, 'MMM');
-    console.log(day ,this.orderedDate)
-    return `${this.orderedDate} ${day}`
+    // let newdate = date.split('-')
+    let newDate = new Date(date.toString('dd/MMM/yyyy'));
+    // var day = newdate[0];
+    console.log(newDate)
+    
+    const seconds = Math.floor(newDate.getTime() / 1000);
+    console.log(seconds);
+    this.orderedDate = this.pipe.transform(newDate, 'MMMM');
+    return `${this.orderedDate}`
   }
-
 }

@@ -211,6 +211,12 @@
     border-radius: 2px;
 }
 
+textarea:disabled {
+    cursor: default;
+    border-color: rgba(118, 118, 118, 0.3) !important;
+    color: #878787;
+}
+
 .customer_city {
     display: flex;
     gap: 10px;

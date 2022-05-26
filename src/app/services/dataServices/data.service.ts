@@ -8,8 +8,11 @@ export class DataService {
   private messageSource = new BehaviorSubject('');
   recievedData = this.messageSource.asObservable();
 
-  private bookIdSource = new BehaviorSubject('');
-  recievedBookIdData = this.bookIdSource.asObservable();
+  private bookQuantity = new BehaviorSubject('');
+  recievedBookQuanitity = this.bookQuantity.asObservable();
+
+  private removebookQuantity = new BehaviorSubject('');
+  recievedremoveBookQuanitity = this.removebookQuantity.asObservable();
 
   constructor() { }
 
@@ -17,7 +20,11 @@ export class DataService {
     this.messageSource.next(message)
   }
 
-  SendBookId(bookId: any) {
-    this.bookIdSource.next(bookId)
+  SendBookQuantity(bookQuantity: any) {
+    this.bookQuantity.next(bookQuantity)
+  }
+
+  SendRemoveBookQuantity(bookQuantity: any) {
+    this.removebookQuantity.next(bookQuantity)
   }
 }

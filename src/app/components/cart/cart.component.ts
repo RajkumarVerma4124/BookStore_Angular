@@ -5,6 +5,7 @@ import { OrderService } from 'src/app/services/orderServices/order.service';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { CartService } from 'src/app/services/cartServices/cart.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DataService } from 'src/app/services/dataServices/data.service';
 
 @Component({
   selector: 'app-cart',
@@ -33,7 +34,7 @@ export class CartComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
   constructor( private addressService: AddressService, private router: Router, private snackBar: MatSnackBar,
-    private cartService: CartService, private formbuilder: FormBuilder, private orderService: OrderService) { }
+    private cartService: CartService, private formbuilder: FormBuilder, private orderService: OrderService, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.getAllCart();
@@ -88,9 +89,9 @@ export class CartComponent implements OnInit {
     }
   }
 
-  removeFromCart(cartId: any) {
-    console.log(cartId);
-    this.cartService.removeCart(cartId).subscribe((response: any) => {
+  removeFromCart(cartData: any) {
+    console.log(cartData);
+    this.cartService.removeCart(cartData.cartId).subscribe((response: any) => {
       console.log("Remove The Book From Cart Successfully", response);
       this.snackBar.open("Book Remove From Cart Successfully", 'Success', {
         duration: 4000,
@@ -106,6 +107,7 @@ export class CartComponent implements OnInit {
         verticalPosition: this.verticalPosition,
       })
     })
+    this.dataService.SendRemoveBookQuantity(cartData.bookQuantity);
   }
 
   getAllCart() {
@@ -120,7 +122,7 @@ export class CartComponent implements OnInit {
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
       })
-      window.location.reload();
+      this.router.navigateByUrl('/dashboard/allbooks')
     })
   }
 
@@ -207,7 +209,7 @@ export class CartComponent implements OnInit {
   }
 
   editAddress() {
-    this.isUpdate = true;
+    this.isUpdate = !this.isUpdate;
   }
 
   getAddress(typeId: any) {

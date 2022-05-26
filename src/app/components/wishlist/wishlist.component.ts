@@ -42,7 +42,7 @@ export class WishlistComponent implements OnInit {
     console.log(wishlistId)
     this.wishlistService.removeWishlist(wishlistId).subscribe((response: any) => {
       console.log("Deleted The Wishlist Successfully", response);
-      this.snackBar.open("Deleted The Wishlist Successfully", 'Failed', {
+      this.snackBar.open("Deleted The Wishlist Successfully", 'Success', {
         duration: 4000,
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,

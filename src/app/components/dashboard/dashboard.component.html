@@ -37,11 +37,11 @@
                 <mat-divider *ngIf="fullName == null"></mat-divider>
                 <div fxLayout="row" fxLayoutAlign="start center" style="margin-left: 25px;">
                     <img style="height:15px; width:15px;" src="../../../assets/images/orders.svg" alt="">
-                    <p style="margin-left: 5px; color: #7e7e7e; margin-top: 10px; cursor: pointer" routerLink="/dashboard/orderlist">Orders</p>
+                    <p style="margin-left: 5px; color: #7e7e7e; margin-top: 10px; cursor: pointer" (click)="goToOrders()">Orders</p>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="start center" style="margin-left: 25px;">
                     <img style="height:15px; width:15px;" src="../../../assets/images/favorite.svg" alt="">
-                    <p style="margin-left: 5px; color: #7e7e7e;margin-top: 10px;cursor: pointer" routerLink="/dashboard/wishlist">Wishlist</p>
+                    <p style="margin-left: 5px; color: #7e7e7e;margin-top: 10px;cursor: pointer" (click)="goToWishlist()">Wishlist</p>
                 </div>
                 <div *ngIf="fullName != null">
                     <button class="btnforprofile" matTooltip="Logout" mat-raised-button (click)="logout()">logout</button>
@@ -50,6 +50,7 @@
             <div class="img_cart_container" (click)="goToCart()">
                 <img class="img_cart" src="../../../assets/images/cart.svg">
                 <span class="person_name">Cart</span>
+                <span class="cart_quantity">{{tempbookQuantity}}</span>
             </div>
         </div>
     </mat-toolbar>

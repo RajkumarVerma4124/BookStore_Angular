@@ -15,9 +15,11 @@ export class AllbooksComponent implements OnInit {
   searchString: string= "";
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+  fullName: any = "";
 
   constructor(private bookService: BookService, private router: Router, private snackBar: MatSnackBar, 
-    private dataService: DataService) { }
+    private dataService: DataService) {
+     }
 
   ngOnInit(): void {
     this.getAllbooks();
@@ -25,6 +27,7 @@ export class AllbooksComponent implements OnInit {
       console.log("Data Recieved", response);
       this.searchString = response;
     })
+    this.fullName = localStorage.getItem("FullName")
   }
 
   getAllbooks() {
