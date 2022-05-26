@@ -67,8 +67,10 @@ export class DashboardComponent implements OnInit {
     localStorage.removeItem("MobileNo");
     localStorage.removeItem("Email");
     localStorage.clear();
-    // this.router.navigateByUrl('/login');
-    window.location.reload();
+    this.fullName = "Profile"
+    setTimeout(() => {
+      this.router.navigateByUrl('/dashboard/logout');
+    }, 50);
   }
 
   login() {

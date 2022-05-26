@@ -18,15 +18,15 @@
             </div>
         </div>
         <div class="search_right">
-            <div class="img_person">
+            <div class="img_person" style="cursor: pointer">
                 <mat-icon [matMenuTriggerFor]="logoutmenu">person_outline</mat-icon>
                 <span class="person_name" *ngIf="fullName !== 'null'">{{fullName}}</span>
-                <span class="person_name" style="margin-top:1px" *ngIf="fullName == null">Profile</span>
+                <span class="person_name" style="margin-top:1px;" *ngIf="fullName == null">Profile</span>
             </div>
             <mat-menu #logoutmenu="matMenu" class="usermenu">
                 <p *ngIf="fullName == null" style="text-align: left; color: #0A0102; margin-left: 20px;">Welcome</p>
                 <p *ngIf="fullName == null" style="text-align: left; color: #878787; margin-left: 20px; font-size:12px; margin-top:-3px; display: flex; flex-wrap: wrap;">To access account and manage orders</p>
-                <div *ngIf="fullName != null" fxLayout="row" fxLayoutAlign="start center" style="margin-left: 21px;">
+                <div *ngIf="fullName != null" fxLayout="row" fxLayoutAlign="start center" style="margin-left: 21px; cursor: pointer;" routerLink="/dashboard/profile">
                     <!-- <img style="height:15px; width:15px;" src="../../../assets/images/orders.svg" alt=""> -->
                     <mat-icon style="color: #878787;height:15px; width:15px; margin-top:-15px; margin-right:5px">person_outline</mat-icon>
                     <p style="margin-left: 5px; color: #7e7e7e; margin-top: 5px">Profile</p>

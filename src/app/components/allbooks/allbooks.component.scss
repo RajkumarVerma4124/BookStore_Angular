@@ -150,6 +150,7 @@
     opacity: 0.91;
     position: absolute;
     color: #0A0102;
+    cursor: pointer;
 }
 
 .quickView {
@@ -165,6 +166,7 @@
     position: absolute;
     opacity: 0;
     margin-top: 160px;
+    cursor: pointer;
 }
 
 @media (max-width: 910px) {

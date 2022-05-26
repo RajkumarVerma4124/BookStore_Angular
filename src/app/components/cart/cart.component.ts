@@ -136,6 +136,8 @@ export class CartComponent implements OnInit {
   addressShowHide() {
     this.addressHide = !this.addressHide;
     this.submitted = false;
+    this.isUpdate = false;
+
   }
 
   summaryShowHide() {
@@ -209,7 +211,7 @@ export class CartComponent implements OnInit {
   }
 
   editAddress() {
-    this.isUpdate = !this.isUpdate;
+    this.isUpdate = true;
   }
 
   getAddress(typeId: any) {

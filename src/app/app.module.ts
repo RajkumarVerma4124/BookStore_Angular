@@ -32,6 +32,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { OrderplacedComponent } from './components/orderplaced/orderplaced.component';
 import { OrderlistComponent } from './components/orderlist/orderlist.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     CartComponent,
     OrderplacedComponent,
     OrderlistComponent,
-    WishlistComponent
+    WishlistComponent,
+    ProfileComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

@@ -6,9 +6,11 @@ import { CartComponent } from './components/cart/cart.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
 import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
 import { OrderlistComponent } from './components/orderlist/orderlist.component';
 import { OrderplacedComponent } from './components/orderplaced/orderplaced.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { QuickviewComponent } from './components/quickview/quickview.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
@@ -30,6 +32,8 @@ const routes: Routes = [
       { path: 'orderplaced', component: OrderplacedComponent },
       { path: 'orderlist', component: OrderlistComponent },
       { path: 'wishlist', component: WishlistComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'logout', component: LogoutComponent },
     ]
   },
   { path: '**', component: PagenotfoundComponent }

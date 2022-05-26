@@ -1,0 +1,135 @@
+<div class="main_container">
+    <div class="container_wrapper" fxLayout="column">
+        <div class="profile_header" fxLayout="row">
+            <p style="font-weight: 500;"><span style="color: #9D9D9D;">Home/ </span>Profile</p>
+        </div>
+        <div class="profile_container">
+            <div style="margin-top: 13px; font-weight: 500; font-size: 16px; cursor: pointer;">
+                Personal&nbsp;Details
+            </div>
+            <div class="customer_profile">
+                <div class="customer_info">
+                    <div class="fullName">
+                        <mat-label style="font-size: 12px; font-weight: 500;">Full Name</mat-label>
+                        <mat-form-field appearance="outline">
+                            <input disabled matInput [value]="fullName">
+                        </mat-form-field>
+                    </div>
+                    <div class="Mobile_Num">
+                        <mat-label style="font-size: 12px; font-weight: 500;">Mobile Number</mat-label>
+                        <mat-form-field appearance="outline">
+                            <input disabled matInput [value]="mobileNumber">
+                        </mat-form-field>
+                    </div>
+                    <div class="Mobile_Num">
+                        <mat-label style="font-size: 12px; font-weight: 500;">Password</mat-label>
+                        <mat-form-field appearance="outline">
+                            <input disabled matInput value="******************">
+                        </mat-form-field>
+                    </div>
+                    <div class="Mobile_Num">
+                        <mat-label style="font-size: 12px; font-weight: 500;">Email id</mat-label>
+                        <mat-form-field appearance="outline">
+                            <input disabled matInput [value]="emailId">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="address_container">
+            <form [formGroup]="customerAddressForm">
+                <div class="customer_address">
+                    <div class="address_header">
+                        <div style="margin-top: 13px; font-weight: 500; font-size: 14px; cursor: pointer;">
+                            Address&nbsp;Details
+                        </div>
+                        <button type="button" class="address_add_button" (click)="addNewAddress()">Add New Address</button>
+                    </div>
+                </div>
+                <div class="cutomer_address_info">
+                    <div class="address_edit">
+                        <div *ngIf="customerAdressObj?.typeId == undefined">
+                            <p> New Address</p>
+                        </div>
+                        <div *ngIf="customerAdressObj?.typeId==1">
+                            <p> Home</p>
+                        </div>
+                        <div *ngIf="customerAdressObj?.typeId==2">
+                            <p> Work</p>
+                        </div>
+                        <div *ngIf="customerAdressObj?.typeId==3">
+                            <p> Others</p>
+                        </div>
+                        <div>
+                            <button mat-button type="button" class="address_edit_button" (click)="editAddress()">Edit</button>
+                        </div>
+                    </div>
+                    <div *ngIf="submitted===true">
+                        <mat-label style="font-size: 13px; font-weight: 500;">Address</mat-label>
+                        <textarea type="text" class="addressInput" placeholder="Address" formControlName="address" [attr.disabled]="submitted"></textarea>
+                    </div>
+                    <div *ngIf="submitted===false" fxLayout="column">
+                        <mat-label style="font-size: 13px; font-weight: 500;">Address</mat-label>
+                        <textarea type="text" class="addressInput" placeholder="Address" formControlName="address" name="address" [value]="customerAdressObj?.address"></textarea>
+                    </div>
+                    <div class="customer_city">
+                        <div class="fullName">
+                            <mat-label>city/town</mat-label>
+                            <mat-form-field appearance="outline">
+                                <input matInput [attr.disabled]="submitted" placeholder="City" formControlName="city" [value]="customerAdressObj?.city">
+                                <!-- <mat-error>Enter City Name</mat-error> -->
+                            </mat-form-field>
+                        </div>
+                        <div class="fullName">
+                            <mat-label>state</mat-label>
+                            <mat-form-field appearance="outline">
+                                <input [attr.disabled]="submitted" matInput type="text" placeholder="State" formControlName="state" [value]="customerAdressObj?.state">
+                                <!-- <mat-error>Enter State Name</mat-error> -->
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="addresstype" fxLayout="column" fxLayoutGap="7px">
+                        <span>Type</span>
+                        <mat-radio-group aria-label="Select an option">
+                            <mat-radio-button *ngIf="isUpdate == false" [disabled]="submitted" type="button" class="home" (click)="addressTypevalue(1)" value="1">Home</mat-radio-button>
+                            <mat-radio-button *ngIf="isUpdate == true" [disabled]="submitted" type="button" class="home" (click)="getAddress(1)" (click)="addressTypevalue(1)" value="1">Home</mat-radio-button>
+                            <mat-radio-button *ngIf="isUpdate == false" [disabled]="submitted" type="button" class="work" (click)="addressTypevalue(2)" value="2">Work</mat-radio-button>
+                            <mat-radio-button *ngIf="isUpdate == true" [disabled]="submitted" type="button" class="work" (click)="getAddress(2)" (click)="addressTypevalue(2)" value="2">Work</mat-radio-button>
+                            <mat-radio-button *ngIf="isUpdate == false" [disabled]="submitted" type="button" class="other" (click)="addressTypevalue(3)" value="3">Others</mat-radio-button>
+                            <mat-radio-button *ngIf="isUpdate == true" [disabled]="submitted" type="button" class="other" (click)="getAddress(3)" (click)="addressTypevalue(2)" value="3">Others</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <button type="submit" (click)="onSubmit(customerAdressObj)" class="continueButton">CONTINUE</button>
+                </div>
+            </form>
+            <div class="addressList_container">
+                <div class="customer_address">
+                    <div class="address_header">
+                        <div style="margin-top: 17px; font-weight: 500; font-size: 16px; cursor: pointer;" (click)="addressShowHide()">
+                            Customer Addressess List
+                        </div>
+                    </div>
+                    <div class="address_details" *ngFor="let address of customerAdressessObj">
+                        <div *ngIf="addressHide">
+                            <div class="address">Address : {{address?.address}} </div>
+                            <div class="city">City : {{address?.city}}</div>
+                            <div class="state">State : {{address?.state}} </div>
+                            <div *ngIf="address?.typeId==1">
+                                <div class="state">Type : Home </div>
+                            </div>
+                            <div *ngIf="address?.typeId==2">
+                                <div class="state">Type : Work </div>
+                            </div>
+                            <div *ngIf="address?.typeId==3">
+                                <div class="state">Type : Others </div>
+                            </div>
+                            <div>
+                                <mat-divider></mat-divider>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
