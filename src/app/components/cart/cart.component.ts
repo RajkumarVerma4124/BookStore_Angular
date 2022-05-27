@@ -266,7 +266,7 @@ export class CartComponent implements OnInit {
       this.customerAdressObj = response.data[0];
     }, error => {
       console.log(error);
-      this.snackBar.open(error.error.message, 'Failed', {
+      this.snackBar.open(`${error.error.message} For That Type Add Some In Profle Or Here`, 'Failed', {
         duration: 4000,
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,

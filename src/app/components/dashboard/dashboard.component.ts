@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   tempbookQuantity: number = 0;
   tempremovedQuantity: number = 0;
   bookQuantity: number = 0;
-  horizontalPosition: MatSnackBarHorizontalPosition = 'start';
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   cartItems: any;
   cartItemsCount: number = 0;
@@ -108,7 +108,15 @@ export class DashboardComponent implements OnInit {
 
 
   goToHome() {
-    this.router.navigateByUrl('/dashboard/allbooks');
+    if(this.fullName != null){
+      this.router.navigateByUrl('/dashboard/allbooks');
+    }else{
+      this.snackBar.open("Please Login First", 'Failed', {
+        duration: 4000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      })
+    }
   }
   
   goToOrders() {

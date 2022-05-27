@@ -46,13 +46,13 @@
             </div>
         </div>
         <div class="address_container">
-            <div *ngIf="!addressHeaderHide" style="margin-top: 13px; font-weight: 500; font-size: 14px; cursor: pointer;" (click)="addressHeaderShowHide()">
+            <div *ngIf="!addressHeaderHide" style="margin-top: 13px; font-weight: 500; font-size: 14px; cursor: pointer;">
                 Address&nbsp;Details
             </div>
             <div *ngIf="addressHeaderHide" class="customer_address">
                 <form [formGroup]="customerAddressForm">
                     <div class="address_header" *ngIf="addressHeaderHide">
-                        <p style="margin-top: 13px; font-weight: 500; font-size: 14px; cursor: pointer;" (click)="addressHeaderShowHide()">
+                        <p style="margin-top: 13px; font-weight: 500; font-size: 14px; cursor: pointer;">
                             Customer&nbsp;Details
                         </p>
                         <button class="address_add_button" type="button" (click)="addressShowHide()" *ngIf="addressHeaderShowHide && !addressHide">Add New Address</button>

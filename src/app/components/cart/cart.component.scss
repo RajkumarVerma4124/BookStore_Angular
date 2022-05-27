@@ -318,6 +318,10 @@ textarea:disabled {
     width: 100%;
 }
 
+::ng-deep .mat-snack-bar-container {
+    width: 100px;
+}
+
 @media (max-width: 850px) {
     .main_container {
         display: flex;
