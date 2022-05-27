@@ -61,7 +61,9 @@ export class LoginComponent implements OnInit {
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,
           })
-          this.router.navigateByUrl('/dashboard')
+          this.router.navigateByUrl('/dashboard').then(() => {
+            window.location.reload();
+          });
         }, error => {
           console.log(error);
           this.snackBar.open(error.error.message, 'Failed', {
@@ -82,7 +84,9 @@ export class LoginComponent implements OnInit {
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,
           })
-          this.router.navigateByUrl('/dashboard')
+          this.router.navigateByUrl('/dashboard').then(() => {
+            window.location.reload();
+          });
         }, error => {
           console.log(error);
           this.snackBar.open(error.error.message, 'Failed', {

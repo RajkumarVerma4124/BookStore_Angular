@@ -35,17 +35,4 @@ export class OrderlistComponent implements OnInit {
       })
     })
   }
-
-  getformatedDate(date: any) {
-    console.log(date)
-    // let newdate = date.split('-')
-    let newDate = new Date(date.toString('dd/MMM/yyyy'));
-    // var day = newdate[0];
-    console.log(newDate)
-    
-    const seconds = Math.floor(newDate.getTime() / 1000);
-    console.log(seconds);
-    this.orderedDate = this.pipe.transform(newDate, 'MMMM');
-    return `${this.orderedDate}`
-  }
 }

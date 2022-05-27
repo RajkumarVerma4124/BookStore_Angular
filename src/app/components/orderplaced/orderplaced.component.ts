@@ -11,5 +11,4 @@ export class OrderplacedComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

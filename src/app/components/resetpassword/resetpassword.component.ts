@@ -12,6 +12,7 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
   templateUrl: './resetpassword.component.html',
   styleUrls: ['./resetpassword.component.scss']
 })
+
 export class ResetpasswordComponent implements OnInit {
   category: boolean = true;
   resetPassForm!: FormGroup;

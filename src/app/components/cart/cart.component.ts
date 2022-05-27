@@ -121,6 +121,7 @@ export class CartComponent implements OnInit {
       this.cartItems = response.data;
       this.cartItemsCount = response.data.length;
       setTimeout(() => {
+        // console.log(this.cartItems)
       this.getAllbooks();
       },100)
     }, error => {
@@ -313,6 +314,7 @@ export class CartComponent implements OnInit {
   getAllbooks() {
     this.bookService.getallbooks().subscribe((response: any) => {
       this.booksList = response.data
+      // console.log(this.cartItems)
       this.booksList.forEach((books: any) => {
         if (books.bookQuantity <= 0){ 
           this.cartItems.forEach((item: any) => {

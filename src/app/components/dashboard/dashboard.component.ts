@@ -46,12 +46,13 @@ export class DashboardComponent implements OnInit {
     this.searchActive = true;
     if (this.searchTerm.length == 0) {
       this.clickCross();
-    }
+    } 
   }
 
   clickCross() {
     this.searchTerm = "";
     this.searchActive = false;
+    this.dataService.SendData(this.searchTerm);
   }
 
   setSearchActive() {
@@ -70,17 +71,23 @@ export class DashboardComponent implements OnInit {
     localStorage.clear();
     this.fullName = "Profile"
     setTimeout(() => {
-      this.router.navigateByUrl('/dashboard/logout');
+      this.router.navigateByUrl('/dashboard/logout').then(() => {
+        window.location.reload();
+      });
     }, 50);
   }
 
   login() {
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/login').then(() => {
+      window.location.reload();
+    });
   }
 
   goToCart(){
     if (this.cartItemsCount > 0) {
-      this.router.navigateByUrl('/dashboard/cart');
+      this.router.navigateByUrl('/dashboard/cart').then(() => {
+        window.location.reload();
+      });
     }
     else {
       this.snackBar.open("Add Some Books First", 'Failed', {
@@ -106,10 +113,11 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-
   goToHome() {
     if(this.fullName != null){
-      this.router.navigateByUrl('/dashboard/allbooks');
+      this.router.navigateByUrl('/dashboard/allbooks').then(() => {
+        window.location.reload();
+      });
     }else{
       this.snackBar.open("Please Login First", 'Failed', {
         duration: 4000,
@@ -118,7 +126,7 @@ export class DashboardComponent implements OnInit {
       })
     }
   }
-  
+
   goToOrders() {
     if(this.fullName != null) {
       this.router.navigateByUrl('/dashboard/orderlist');
@@ -130,6 +138,7 @@ export class DashboardComponent implements OnInit {
       })
     }
   }
+
   goToWishlist() {
     if (this.fullName != null) {
       this.router.navigateByUrl('/dashboard/wishlist');
@@ -140,5 +149,11 @@ export class DashboardComponent implements OnInit {
         verticalPosition: this.verticalPosition,
       })
     }
+  }
+
+  goToProfile() {
+    this.router.navigateByUrl('/dashboard/profile').then(() => {
+      window.location.reload();
+    });;
   }
 }

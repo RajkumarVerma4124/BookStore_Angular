@@ -198,15 +198,19 @@ input#rate-5:checked~label {
     color: #FFCE00;
 }
 
-.textarea {
-    margin: 20px 0;
-}
-
-.textarea textarea {
+.commentInput {
     height: 50px;
-    width: 100%;
+    width: 98%;
+    margin: 20px 0;
+    color: #0A0102;
+    background-color: #FFFFFF;
     border: none;
     resize: none;
+    padding: 8px 8px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: normal normal normal 12px/16px Roboto;
+    border-radius: 5px;
 }
 
 ::placeholder {

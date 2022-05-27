@@ -124,7 +124,15 @@
                                     <button style="margin-top: 5px; margin-left: -20px;" mat-button type="button" class="address_edit_button" (click)="editAddress()" (click)="getAddressById(address?.addressId)">Edit</button>
                                 </div>
                                 <div>
-                                    <button style="margin-top: 5px;" mat-button type="button" class="address_edit_button" (click)="deleteAddressById(address?.addressId)">Delete</button>
+                                    <button style="margin-top: 5px;" mat-button [matMenuTriggerFor]="menu" #menuTrigger type="button" class="address_edit_button">Delete</button>
+                                    <mat-menu #menu="matMenu">
+                                        <!-- (click)="deleteAddressById(address?.addressId)" -->
+                                        <p style="margin-top: 5px; margin-left: 15px; color: #878787">Deleting This Address Will Clear The Orders From Orders List Related To It If There's Any</p>
+                                        <div fxLayout="row" style="margin: 5px;">
+                                            <button mat-menu-item style="text-align: center; color: #3371B5; font-weight: 500">Cancel</button>
+                                            <button mat-menu-item style="text-align: center;color: #A03037;font-weight: 500" (click)="deleteAddressById(address?.addressId)">Confirm</button>
+                                        </div>
+                                    </mat-menu>
                                 </div>
                             </div>
                             <div>

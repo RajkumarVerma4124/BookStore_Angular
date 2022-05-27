@@ -61,6 +61,8 @@ export class AllbooksComponent implements OnInit {
 
   quickview(book: any) {
     console.log("Book Id", book.bookId);
-    this.router.navigateByUrl('dashboard/quickview/'+book.bookId)
+    this.router.navigateByUrl('dashboard/quickview/' + book.bookId).then(() => {
+      window.location.reload();
+    });
   }
 }
