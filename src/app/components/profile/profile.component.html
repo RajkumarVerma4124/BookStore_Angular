@@ -60,20 +60,17 @@
                         <div *ngIf="customerAdressObj?.typeId==3">
                             <p> Others</p>
                         </div>
-                        <div>
-                            <button mat-button type="button" class="address_edit_button" (click)="editAddress()">Edit</button>
-                        </div>
                     </div>
                     <div fxLayout="column">
                         <mat-label style="font-size: 13px; font-weight: 500;">Address</mat-label>
-                        <textarea type="text" class="addressInput" placeholder="Address" formControlName="address" name="address" [value]="customerAdressObj?.address"></textarea>
+                        <textarea type="text" class="addressInput" placeholder="Address" formControlName="address" name="address" [ngModel]="customerAdressObj?.address"></textarea>
                     </div>
                     <div class="customer_city">
                         <div class="fullName">
                             <mat-label>city/town</mat-label>
                             <mat-form-field appearance="outline">
                                 <div>
-                                    <input matInput placeholder="City" formControlName="city" [value]="customerAdressObj?.city">
+                                    <input matInput placeholder="City" formControlName="city" [ngModel]="customerAdressObj?.city">
                                 </div>
                             </mat-form-field>
                         </div>
@@ -81,7 +78,7 @@
                             <mat-label>state</mat-label>
                             <mat-form-field appearance="outline">
                                 <div>
-                                    <input matInput type="text" placeholder="State" formControlName="state" [value]="customerAdressObj?.state">
+                                    <input matInput type="text" placeholder="State" formControlName="state" [ngModel]="customerAdressObj?.state">
                                 </div>
                             </mat-form-field>
                         </div>
@@ -90,11 +87,11 @@
                         <span>Type</span>
                         <mat-radio-group aria-label="Select an option">
                             <mat-radio-button *ngIf="isUpdate == false" type="button" class="home" (click)="addressTypevalue(1)" value="1">Home</mat-radio-button>
-                            <mat-radio-button *ngIf="isUpdate == true" type="button" class="home" (click)="updateAddressType(1)" value="1">Home</mat-radio-button>
+                            <mat-radio-button *ngIf="isUpdate == true" type="button" class="home" (click)="updateAddressType(1)" [checked]="customerAdressObj?.typeId==1" value="1">Home</mat-radio-button>
                             <mat-radio-button *ngIf="isUpdate == false" type="button" class="work" (click)="addressTypevalue(2)" value="2">Work</mat-radio-button>
-                            <mat-radio-button *ngIf="isUpdate == true" type="button" class="work" (click)="updateAddressType(2)" value="2">Work</mat-radio-button>
+                            <mat-radio-button *ngIf="isUpdate == true" type="button" class="work" (click)="updateAddressType(2)" [checked]="customerAdressObj?.typeId==2" value="2">Work</mat-radio-button>
                             <mat-radio-button *ngIf="isUpdate == false" type="button" class="other" (click)="addressTypevalue(3)" value="3">Others</mat-radio-button>
-                            <mat-radio-button *ngIf="isUpdate == true" type="button" class="other" (click)="updateAddressType(3)" value="3">Others</mat-radio-button>
+                            <mat-radio-button *ngIf="isUpdate == true" type="button" class="other" (click)="updateAddressType(3)" [checked]="customerAdressObj?.typeId==3" value="3">Others</mat-radio-button>
                         </mat-radio-group>
                     </div>
                     <button type="submit" (click)="onSubmit(customerAdressObj)" class="continueButton" *ngIf="customerAdressObj?.address == undefined || customerAdressObj == null">Add Address</button>

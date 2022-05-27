@@ -51,6 +51,24 @@
     width: 65px;
 }
 
+.outOfStock {
+    width: 70px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 7px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 2px;
+    opacity: 1;
+    position: absolute;
+    color: #0A0102;
+    cursor: pointer;
+    margin-top: -54px;
+    margin-left: -2px;
+}
+
 .bookName {
     font-size: 16px;
     color: #0A0102;

@@ -21,7 +21,10 @@
             </div>
             <div *ngIf="cartHide">
                 <div class="book_details" *ngFor="let cart of cartItems">
-                    <div><img class="bookImage" [src]="cart?.bookImage" alt=""></div>
+                    <div>
+                        <img class="bookImage" [src]="cart?.bookImage" alt="">
+                        <span class="outOfStock" *ngIf="cart?.bookId == outOfStock?.bookId">OUT OF STOCK</span>
+                    </div>
                     <div class="bookInfo">
                         <div class="bookName">{{cart?.bookName}}</div>
                         <div class="authorName">by {{cart?.authorName}}</div>

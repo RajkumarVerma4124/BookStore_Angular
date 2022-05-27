@@ -51,6 +51,7 @@ export class ProfileComponent implements OnInit {
     this.submitted = false;
     this.isUpdate = false;
     this.customerAdressObj = null;
+    this.typeId = 0;
   }
 
   updateAddressType(value: any){

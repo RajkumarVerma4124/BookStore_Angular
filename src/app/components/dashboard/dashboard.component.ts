@@ -102,11 +102,7 @@ export class DashboardComponent implements OnInit {
       console.log(this.cartItemsCount)
     }, error => {
       console.log(error);
-      this.snackBar.open(error.error.message, 'Failed', {
-        duration: 4000,
-        horizontalPosition: this.horizontalPosition,
-        verticalPosition: this.verticalPosition,
-      })
+      this.cartItemsCount = 0;
     })
   }
 

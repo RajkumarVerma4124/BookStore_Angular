@@ -4,7 +4,7 @@
             <button mat-icon-button class="book-icon" aria-label="Example icon-button with menu icon">
                 <img src="../../../assets/images/booklogo.png" alt="">
              </button>
-            <span class="dashboard_text" style="cursor:pointer" (click)="goToHome()">Raj Bookstore</span>
+            <span class="dashboard_text" style="cursor:pointer" (click)="goToHome()" matTooltip="Home">Raj Bookstore</span>
         </div>
         <div class="header_middle">
             <div class="div_wrapper" id="searchBox" [ngClass]="!searchBarActive == true ? 'header__middleLeft' : 'header__middleLeft active'" (click)="setSearchActive()">

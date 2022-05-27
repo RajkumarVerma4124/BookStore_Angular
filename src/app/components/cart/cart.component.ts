@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AddressService } from 'src/app/services/addressServices/address.service';
 import { OrderService } from 'src/app/services/orderServices/order.service';
+import { BookService } from 'src/app/services/bookServices/book.service';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { CartService } from 'src/app/services/cartServices/cart.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -18,6 +19,8 @@ export class CartComponent implements OnInit {
   fullName: any;
   mobileNumber: any;
   bookQuantity: number = 1;
+  booksList: any;
+  outOfStock: any= [];
 
   cartHide: boolean = false;
   addressHide: boolean = false;
@@ -33,7 +36,7 @@ export class CartComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
-  constructor( private addressService: AddressService, private router: Router, private snackBar: MatSnackBar,
+  constructor(private bookService: BookService, private addressService: AddressService, private router: Router, private snackBar: MatSnackBar,
     private cartService: CartService, private formbuilder: FormBuilder, private orderService: OrderService, private dataService: DataService) { }
 
   ngOnInit(): void {
@@ -117,6 +120,9 @@ export class CartComponent implements OnInit {
       console.log("Got The Cart Successfully", response);
       this.cartItems = response.data;
       this.cartItemsCount = response.data.length;
+      setTimeout(() => {
+      this.getAllbooks();
+      },100)
     }, error => {
       console.log(error);
       this.snackBar.open(error.error.message, 'Failed', {
@@ -133,8 +139,16 @@ export class CartComponent implements OnInit {
   }
 
   cartShowHide() {
-    this.cartHide = !this.cartHide;
-    this.addressHeaderHide = !this.addressHeaderHide;
+    if (this.outOfStock.length > 0 || this.outOfStock != "") {
+      this.snackBar.open("Remove The Out Of Stock Book To Continue", 'Alert', {
+        duration: 4000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      })
+    } else {
+      this.cartHide = !this.cartHide;
+      this.addressHeaderHide = !this.addressHeaderHide;
+    }
   }
 
   addressHeaderShowHide() {
@@ -270,6 +284,7 @@ export class CartComponent implements OnInit {
       }
       this.orderService.addOrder(addressObj).subscribe((response: any) => {
         console.log("Order Placed Successfully", response);
+        this.dataService.SendBookQuantity(1);
         this.snackBar.open("Order Placed Successfully", 'Success', {
           duration: 4000,
           horizontalPosition: this.horizontalPosition,
@@ -293,5 +308,28 @@ export class CartComponent implements OnInit {
         verticalPosition: this.verticalPosition,
       })
     }
+  }
+
+  getAllbooks() {
+    this.bookService.getallbooks().subscribe((response: any) => {
+      this.booksList = response.data
+      this.booksList.forEach((books: any) => {
+        if (books.bookQuantity <= 0){ 
+          this.cartItems.forEach((item: any) => {
+            if (item.bookId == books.bookId){
+              this.outOfStock = books
+            }
+          })
+        }
+      })
+      console.log(this.outOfStock)
+    }, error => {
+      console.log(error);
+      this.snackBar.open(error.error.message, 'Failed', {
+        duration: 4000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      })
+    })
   }
 }
