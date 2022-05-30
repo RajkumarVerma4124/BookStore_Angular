@@ -24,6 +24,11 @@ export class DashboardComponent implements OnInit {
   cartItemsCount: number = 0;
 
   constructor(private dataService: DataService, private snackBar: MatSnackBar, private router: Router, private cartService: CartService) {
+ }
+
+  ngOnInit(): void {
+    this.fullName = localStorage.getItem("FullName")
+    this.email = localStorage.getItem("Email")
     this.dataService.recievedBookQuanitity.subscribe((response: any) => {
       console.log("Data Recieved", response);
       this.getAllCart();
@@ -32,11 +37,6 @@ export class DashboardComponent implements OnInit {
       console.log("Data Recieved", response);
       this.getAllCart();
     })
- }
-
-  ngOnInit(): void {
-    this.fullName = localStorage.getItem("FullName")
-    this.email = localStorage.getItem("Email")
   }
 
   recieveSearchNote(noteString: any) {

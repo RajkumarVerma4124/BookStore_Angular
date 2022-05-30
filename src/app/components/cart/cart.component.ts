@@ -170,10 +170,6 @@ export class CartComponent implements OnInit {
     this.customerAddressForm.controls['address'].enable();
   }
 
-  summaryShowHide() {
-    this.summaryHide = !this.summaryHide;
-  }
-
   onSubmit(reqData: any) {
     console.log(reqData)
     if (this.customerAddressForm.valid && this.typeId > 0) {
@@ -194,7 +190,7 @@ export class CartComponent implements OnInit {
             verticalPosition: this.verticalPosition,
           })
           this.addressHeaderHide = !this.addressHeaderHide;
-          this.summaryHide = !this.summaryHide;
+          this.summaryHide = true;
           this.customerAddressForm.controls['city'].disable();
           this.customerAddressForm.controls['state'].disable();
           this.customerAddressForm.controls['address'].disable();
@@ -225,7 +221,7 @@ export class CartComponent implements OnInit {
             verticalPosition: this.verticalPosition,
           })
           this.addressHeaderHide = !this.addressHeaderHide;
-          this.summaryHide = !this.summaryHide;
+          this.summaryHide = true;
           this.customerAddressForm.controls['city'].disable();
           this.customerAddressForm.controls['state'].disable();
           this.customerAddressForm.controls['address'].disable();

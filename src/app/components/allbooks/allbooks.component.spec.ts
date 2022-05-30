@@ -1,15 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AllbooksComponent } from './allbooks.component';
-import { HttpClientModule } from '@angular/common/http';
 
-describe('AllbooksComponent', () => {
+fdescribe('AllbooksComponent', () => {
   let component: AllbooksComponent;
   let fixture: ComponentFixture<AllbooksComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ AllbooksComponent ],
-      imports: [HttpClientModule]
     })
     .compileComponents();
   });
@@ -22,9 +20,5 @@ describe('AllbooksComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-  it('get all books', () => {
-    component.getAllbooks()
-    expect(component.getAllbooks).toBeTruthy();
   });
 });

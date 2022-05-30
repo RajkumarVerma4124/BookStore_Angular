@@ -16,6 +16,7 @@ export class AllbooksComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   fullName: any = "";
+  page: number = 1;
 
   constructor(private bookService: BookService, private router: Router, private snackBar: MatSnackBar, 
     private dataService: DataService) {

@@ -21,7 +21,7 @@
 
         <!-- Books List  -->
         <div class="books_list">
-            <div class="book" *ngFor="let book of booklist | filterbook : searchString">
+            <div class="book" *ngFor="let book of booklist | filterbook : searchString | paginate: { itemsPerPage: 8, currentPage: page }">
                 <div class="book_image">
                     <img class="img" [src]="book?.bookImage">
                     <span class="outOfStock" *ngIf="book.bookQuantity==0">OUT OF STOCK</span>
@@ -41,6 +41,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="books_pagination" fxLayout="column" fxLayoutAlign="center center">
+            <pagination-controls class="text-center my-pagination" (pageChange)="page = $event"></pagination-controls>
         </div>
     </div>
 </div>
